@@ -1,0 +1,32 @@
+{
+	"Component": {
+		"prefix": "component",
+		"body": [
+			"<template>",
+			"\t",
+			"</template>",
+			"",
+			"<script setup>",
+			"import { ref } from \"vue\";",
+			"",
+			"const props = defineProps({",
+			"\t",
+			"});",
+			"</script>",
+		],
+		"description": "A basic Vue component"
+	},
+	"Script setup": {
+		"prefix": "ss",
+		"body": [
+			"<script setup>",
+			"import { ref } from \"vue\";",
+			"",
+			"const props = defineProps({",
+			"\t",
+			"});",
+			"</script>",
+		],
+		"description": "The script portion of a Vue component"
+	}
+}

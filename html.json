@@ -1,0 +1,255 @@
+{
+	//
+	// Misc
+	//
+
+	"data-test": {
+		"prefix": "dt",
+		"body": "data-test=\"${TM_FILENAME_BASE/(.*)(\\.vue)/${1}/}-${element}\"",
+	},
+
+	"Named slot": {
+		"prefix": "slot",
+		"body": [
+			"<slot name=\"${name}\">",
+			"\t",
+			"</slot>",
+		],
+	},
+
+	"Named template": {
+		"prefix": "temp",
+		"body": [
+			"<template #${name}>",
+			"</template>",
+		],
+	},
+
+	"v-for": {
+		"prefix": ["for", "vfor", "vf"],
+		"body": [
+			"<div v-for=\"${item} in ${items}\" :key=\"${item}.id\">",
+			"\t",
+			"</div>",
+		],
+	},
+
+	//
+	// Form
+	//
+
+	"Form input": {
+		"prefix": "fi",
+		"body": [
+			"<form-field>",
+			"\t{{ t(\"${path}.label\") }}",
+			"</form-field>",
+		],
+	},
+
+	"Form input - with help": {
+		"prefix": "fih",
+		"body": [
+			"<form-field>",
+			"\t{{ t(\"${path}.label\") }}",
+			"",
+			"\t<template #help>",
+			"\t\t{{ t(\"${path}.help\") }}",
+			"\t</template>",
+			"</form-field>",
+		],
+	},
+
+	"Form textarea": {
+		"prefix": ["ft", "fta"],
+		"body": [
+			"<form-field type=\"textarea\">",
+			"\t${label}",
+			"</form-field>",
+		],
+	},
+
+	"Radio group": {
+		"prefix": ["fr", "rg"],
+		"body": [
+			"<form-field type=\"radio\" v-bind=\"{ options: tm('${path}.options') }\">",
+			"\t{{ t(\"${path}.label\") }}",
+			"",
+			"\t<template #introduction>",
+			"\t\t{{ t(\"${path}.introduction\") }}",
+			"\t</template>",
+			"</form-field>",
+		],
+	},
+
+	"Button": {
+		"prefix": "button",
+		"body": [
+			"<ui-button class=\"button--primary\">",
+			"\t${label}",
+			"</ui-button>",
+		],
+	},
+
+	"Button (for dialog)": {
+		"prefix": "button-dialog",
+		"body": [
+			"import { useModalDialog } from \"@lewishowles/components\";",
+			"import ${HelpDialog} from \"./dialogs/${help}-dialog/${help}-dialog.vue\";",
+			"const { openModal } = useModalDialog();",
+			"<ui-button class=\"button--muted text-sm\" @click=\"openModal(${HelpDialog})\">",
+			"\t${label}",
+			"</ui-button>",
+		],
+	},
+
+	"Link": {
+		"prefix": "link",
+		"body": [
+			"<link-tag href=\"\">",
+			"\t${label}",
+			"</link-tag>",
+		],
+	},
+
+	"Tabs": {
+		"prefix": "tabs",
+		"body": [
+			"<tab-group>",
+			"\t<tab-item>",
+			"\t\t<template #label>",
+			"\t\t\t${1:Label}",
+			"\t\t</template>",
+			"",
+			"\t\t${2:Content}",
+			"\t</tab-item>",
+			"</tab-group>",
+		],
+	},
+
+	"Tab": {
+		"prefix": "tab",
+		"body": [
+			"<tab-item>",
+			"\t<template #label>",
+			"\t\t${1:Label}",
+			"\t</template>",
+			"",
+			"\t${2:Content}",
+			"</tab-item>",
+		],
+	},
+
+	//
+	// Messaging
+	//
+
+	"Alert - Error": {
+		"prefix": "error",
+		"body": [
+			"<alert-message v-if=\"errorMessage\" type=\"error\">",
+			"\t{{ errorMessage }}",
+			"</alert-message>",
+		],
+	},
+
+	"Alert - Warning": {
+		"prefix": "warning",
+		"body": [
+			"<alert-message v-if=\"warningMessage\" type=\"warning\">",
+			"\t{{ warningMessage }}",
+			"</alert-message>",
+		],
+	},
+
+	"Alert - Success": {
+		"prefix": "success",
+		"body": [
+			"<alert-message v-if=\"successMessage\" type=\"success\">",
+			"\t{{ successMessage }}",
+			"</alert-message>",
+		],
+	},
+
+	//
+	// Interaction
+	//
+
+	"Summary details": {
+		"prefix": "sd",
+		"body": [
+			"<summary-details>",
+			"\t<template #summary>",
+			"\t\t${summary}",
+			"\t</template>",
+			"</summary-details>",
+		],
+	},
+
+	"Summary details - floating": {
+		"prefix": ["sda", "sdf"],
+		"body": [
+			"<summary-details v-bind=\"{ floating: true }\">",
+			"\t<template #summary>",
+			"\t\t${summary}",
+			"\t</template>",
+			"</summary-details>",
+		],
+	},
+
+	//
+	// i18n
+	//
+
+	"Translation": {
+		"prefix": "t",
+		"body": [
+			"{{ t(\"${0}\") }}",
+		],
+	},
+
+	"Translation - component": {
+		"prefix": "i18n",
+		"body": [
+			"<i18n-t keypath=\"${0}\" tag=\"p\" scope=\"global\">",
+			"\t<template #${1}>",
+			"\t\t<strong>{{ t(\"${2}\") }}</strong>",
+			"\t</template>",
+			"</i18n-t>",
+		],
+	},
+
+	"Translation - array": {
+		"prefix": ["ta", "tm"],
+		"body": [
+			"<li v-for=\"${item} in tm('${path}')\" :key=\"${item}\">",
+			"\t{{ rt(${item}) }}",
+			"</li>",
+		],
+	},
+
+	//
+	// Docs
+	//
+
+	"Documentation prop": {
+		"prefix": "docsprop",
+		"body": [
+			"<component-prop id=\"prop-${key}\">",
+			"\t<template #name>",
+			"\t\t${propName}",
+			"\t</template>",
+			"",
+			"\t<template #type>",
+			"\t\t${Boolean}",
+			"\t</template>",
+			"",
+			"\t<template #default-value>",
+			"\t\t${defaultValue}",
+			"\t</template>",
+			"",
+			"\t${description}",
+			"</component-prop>",
+		],
+	},
+}

@@ -1,0 +1,45 @@
+{
+	"Component prop": {
+		"prefix": "prop",
+		"body": [
+			"### `${prop}`",
+			"",
+			"- type: `${string}`",
+			"- default: `${null}`",
+		],
+	},
+
+	"Slot": {
+		"prefix": "slot",
+		"body": [
+			"### `${slotName}`",
+			"",
+			"- default: ${default}",
+			"",
+			"${description}",
+			"",
+			"#### Slot props",
+			"",
+			"##### `...`",
+			"",
+			"- type: `string`",
+			"",
+			"..."
+		],
+	},
+
+	"Helper documentation": {
+		"prefix": "helper",
+		"body": [
+			"### `${helper}`",
+			"",
+			"${description}",
+			"",
+			"#### Example",
+			"",
+			"```js",
+			"${helper} // ??",
+			"```",
+		],
+	}
+}

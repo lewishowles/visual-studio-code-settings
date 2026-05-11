@@ -1,0 +1,38 @@
+{
+	"Function parameter": {
+		"prefix": ["param", "paramt"],
+		"body": [
+			"@param  ${1:name}",
+			"*     ${2:description}",
+		],
+	},
+	"Function returns": {
+		"prefix": ["returns", "returnst"],
+		"body": [
+			"@returns  ${1:name}",
+			"*     ${2:description}",
+		],
+	},
+
+	//
+	// Astro
+	//
+	"Component": {
+		"prefix": "importc",
+		"body": [
+			"import ${1:Component} from \"@/components/${2:folder}/${3:component}.astro\"",
+		],
+	},
+	"Icon component": {
+		"prefix": "importi",
+		"body": [
+			"import Icon${1:Glasses} from \"@/components/icons/icon-${2:glasses}.astro\"",
+		],
+	},
+	"Doodle component": {
+		"prefix": "importd",
+		"body": [
+			"import Doodle${1:Hi} from \"@/components/scribbles/doodle-${2:hi}.astro\"",
+		],
+	},
+}

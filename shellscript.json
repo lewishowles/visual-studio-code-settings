@@ -1,0 +1,22 @@
+{
+	"Colour red": {
+		"prefix": "red",
+		"body": "\\${RED}${CLIPBOARD}\\${RESET_COLOUR}",
+	},
+	"Colour purple": {
+		"prefix": "purple",
+		"body": "\\${PURPLE}${CLIPBOARD}\\${RESET_COLOUR}",
+	},
+	"Colour blue": {
+		"prefix": "blue",
+		"body": "\\${BLUE}${CLIPBOARD}\\${RESET_COLOUR}",
+	},
+	"Colour green": {
+		"prefix": "green",
+		"body": "\\${GREEN}${CLIPBOARD}\\${RESET_COLOUR}",
+	},
+	"Colour yellow": {
+		"prefix": "yellow",
+		"body": "\\${YELLOW}${CLIPBOARD}\\${RESET_COLOUR}",
+	},
+}
