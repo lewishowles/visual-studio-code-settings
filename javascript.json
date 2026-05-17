@@ -174,7 +174,7 @@
 			"try {",
 			"\t",
 			"} catch (error) {",
-			"\tconsole.log(\"${TM_FILENAME_BASE}[${function}]: ${message}.\");",
+			"\tconsole.error(\"${TM_FILENAME_BASE}[${function}]: ${message}.\");",
 			"}",
 		],
 	},
