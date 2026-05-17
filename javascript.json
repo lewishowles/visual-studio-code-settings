@@ -329,7 +329,7 @@
 	"Import composable": {
 		"prefix": "importc",
 		"body": [
-			"import use${Composable} from \"@/composables/use-${file}/use-${file}\";",
+			"import use${Composable} from \"@/composables/use-${file}\";",
 			"",
 			"const { variable } = use${Composable}();",
 		],
