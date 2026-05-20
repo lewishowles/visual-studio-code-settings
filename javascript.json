@@ -703,6 +703,11 @@
 		],
 	},
 
+	"Vitest - Mock Api": {
+		"prefix": "mockapi",
+		"body": "import mockApi from \"@test/unit/support/mock-api\";",
+	},
+
 	"Vitest - Mock": {
 		"prefix": "mock",
 		"body": [
