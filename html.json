@@ -35,8 +35,80 @@
 	},
 
 	//
+	// Content
+	//
+
+	"Loading indicator": {
+		"prefix": ["li", "loading", "load"],
+		"body": "<loading-indicator>Loading ?…</loading-indicator>",
+	},
+
+	"Loading indicator (large)": {
+		"prefix": ["lil", "loadingl", "loadinglarge", "loadl"],
+		"body": [
+			"<loading-indicator :large=\"true\">",
+			"\tLoading ?…",
+			"</loading-indicator>",
+		],
+	},
+
+	"None found": {
+		"prefix": "nf",
+		"body": [
+			"<none-found>",
+			"\t<template #title></template>",
+			"",
+			"\t",
+			"</none-found>",
+		],
+	},
+
+	"divider": {
+		"prefix": "div",
+		"body": [
+			"<content-separator />",
+		],
+	},
+
+	"divider - horizontal": {
+		"prefix": "divh",
+		"body": [
+			"<content-separator orientation=\"vertical\" />",
+		],
+	},
+
+	"hr": {
+		"prefix": "hr",
+		"body": [
+			"<content-separator tag=\"hr\" />",
+		],
+	},
+
+	"vr": {
+		"prefix": "vr",
+		"body": [
+			"<content-separator tag=\"hr\" orientation=\"vertical\" />",
+		],
+	},
+
+	//
 	// Form
 	//
+
+	"Form skeleton": {
+	"prefix": "form",
+		"body": [
+			"<form-wrapper v-model=\"formData\" @submit=\"\">",
+			"",
+			"",
+			"\t<template #submit-button-label>${Submit button label}</template>",
+			"",
+			"\t<template #error>",
+			"\t\t{{ errorMessage }}",
+			"\t</template>",
+			"</form-wrapper>",
+		],
+	},
 
 	"Form input": {
 		"prefix": "fi",

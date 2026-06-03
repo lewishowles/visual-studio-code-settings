@@ -329,7 +329,16 @@
 	"Import composable": {
 		"prefix": "importc",
 		"body": [
-			"import use${Composable} from \"@/composables/use-${file}\";",
+			"import use${Composable} from \"@/composables/${folder}/use-${file}\";",
+			"",
+			"const { variable } = use${Composable}();",
+		],
+	},
+
+	"Import query": {
+		"prefix": "importq",
+		"body": [
+			"import { use${Composable} } from \"@/queries/${folder}\";",
 			"",
 			"const { variable } = use${Composable}();",
 		],
@@ -435,37 +444,24 @@
 		],
 	},
 
-	"Load data": {
-		"prefix": "load",
-		"body": [
-			"/**",
-			" *",
-			" */",
-			"async function ${loadData}() {",
-			"\ttry {",
-			"\t\tconst response = await get(\"\");",
-			"\t",
-			"\t\tif (!isNonEmptyArray(response)) {",
-			"\t\t\tthrow new Error(`Expected non-empty array <response>, received ${getFriendlyDisplay(response)}`);",
-			"\t\t}",
-			"\t\tif (!isNonEmptyObject(response)) {",
-			"\t\t\tthrow new Error(`Expected non-empty object <response>, received ${getFriendlyDisplay(response)}`);",
-			"\t\t}",
-			"\t",
-			"\t\t${value}.value = response;",
-			"\t} catch (error) {",
-			"\t\tconsole.error(\"${TM_FILENAME_BASE}[${loadData}]: Unable to load data.\");",
-			"\t}",
-			"}",
-		],
-	},
-
 	"Watch": {
 		"prefix": "watch",
 		"body": [
 			"watch(${ref}, () => {",
 			"\t",
 			"});",
+		],
+	},
+
+	"Use modal": {
+		"prefix": "modal",
+		"body": [
+			"import { useModalDialog } from \"@lewishowles/components\";",
+			"import ${Component} from \"@/components/${folder}/${file}/${file}.vue\";",
+			"",
+			"const { openModal } = useModalDialog();",
+			"",
+			"openModal(${Component}, { alertId });",
 		],
 	},
 
@@ -633,7 +629,7 @@
 		"prefix": "specc",
 		"body": [
 			"import { createMount } from \"@unit/support/mount\";";
-			"import { describe, expect, test } from \"vitest\";";
+			"import { describe, expect, test } from \"vite-plus/test\";";
 			"import ${TM_FILENAME_BASE/(.*)(\\.test)/${1:/pascalcase}/} from \"./${TM_FILENAME_BASE/(.*)(\\.test)/${1:/kebabcase}/}.vue\";";
 			"";
 			"const mount = createMount(${TM_FILENAME_BASE/(.*)(\\.test)/${1:/pascalcase}/});";
@@ -653,7 +649,7 @@
 	"Vitest spec - helper": {
 		"prefix": "spech",
 		"body": [
-			"import { describe, expect, test } from \"vitest\";",
+			"import { describe, expect, test } from \"vite-plus/test\";",
 			"import { ${TM_FILENAME_BASE/(.*)(\\.test)/${1:/camelcase}/} } from \"./${TM_FILENAME_BASE/(.*)(\\.test)/${1:/kebabcase}/}\";",
 			"",
 			"describe(\"${TM_FILENAME_BASE/(.*)(\\.test)/${1:/kebabcase}/}\", () => {",
@@ -667,8 +663,8 @@
 	"Vitest spec - composable": {
 		"prefix": "speccl",
 		"body": [
-			"import { describe, expect, test } from \"vitest\";",
-			"import ${TM_FILENAME_BASE/(.*)(\\.test)/${1:/camelcase}/} from \"./${TM_FILENAME_BASE/(.*)(\\.test)/${1:/kebabcase}/}\";",
+			"import { describe, expect, test } from \"vite-plus/test\";",
+			"import ${TM_FILENAME_BASE/(.*)(\\.test)/${1:/camelcase}/} from \".\";",
 			"",
 			"describe(\"${TM_FILENAME_BASE/(.*)(\\.test)/${1:/camelcase}/}\", () => {",
 			"\ttest(\"Initialises\", () => {",
@@ -687,7 +683,7 @@
 	"Vitest spec - store": {
 		"prefix": "specs",
 		"body": [
-			"import { beforeEach, describe, expect, test } from \"vitest\";",
+			"import { beforeEach, describe, expect, test } from \"vite-plus/test\";",
 			"import { setActivePinia, createPinia } from \"pinia\";",
 			"import { use${TM_FILENAME_BASE/(.*)(\\.test)/${1:/pascalcase}/}Store } from \"./${TM_FILENAME_BASE/(.*)(\\.test)/${1:/kebabcase}/}\";",
 			"",
