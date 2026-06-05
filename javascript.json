@@ -179,6 +179,27 @@
 		],
 	},
 
+	"Function": {
+		"prefix": "func",
+		"body": [
+			"/**",
+			" * ${comment}",
+			" */",
+			"function closeResults() {",
+			"\t//",
+			"}",
+		],
+	},
+
+	"Function comment": {
+		"prefix": "com",
+		"body": [
+			"/**",
+			" * ${comment}",
+			" */",
+		],
+	},
+
 	//
 	// Vue
 	//
