@@ -1,16 +1,14 @@
 {
 	//
-	// Javascript
+	// Documentation
 	//
-	"Helper function": {
-		"prefix": "helper",
+
+	"Function comment": {
+		"prefix": "com",
 		"body": [
 			"/**",
-			" * ",
+			" * ${comment}",
 			" */",
-			"export function ${TM_FILENAME_BASE/(.*)/${1:/camelcase}/}() {",
-			"\t",
-			"}",
 		],
 	},
 
@@ -96,6 +94,306 @@
 		],
 	},
 
+	//
+	// Scaffolding
+	//
+
+	"Helper function": {
+		"prefix": "helper",
+		"body": [
+			"/**",
+			" * ",
+			" */",
+			"export function ${TM_FILENAME_BASE/(.*)/${1:/camelcase}/}() {",
+			"\t",
+			"}",
+		],
+	},
+
+	"Function": {
+		"prefix": "func",
+		"body": [
+			"/**",
+			" * ${comment}",
+			" */",
+			"function closeResults() {",
+			"\t//",
+			"}",
+		],
+	},
+
+	"Composable": {
+		"prefix": "composable",
+		"body": [
+			"import { computed, ref } from \"vue\";",
+			"",
+			"/**",
+			" * ",
+			" */",
+			"export default function ${TM_FILENAME_BASE/(.*)/${1:/camelcase}/}() {",
+			"\treturn {",
+			"\t\t",
+			"\t}",
+			"}",
+		],
+	},
+
+	"Router": {
+		"prefix": "router",
+		"body": [
+			"import { createRouter, createWebHistory } from \"vue-router\";",
+			"import PageHome from \"@/views/page-home/page-home.vue\";",
+			"",
+			"const router = createRouter({",
+			"\thistory: createWebHistory(import.meta.env.BASE_URL),",
+			"\troutes: [",
+			"\t\t{",
+			"\t\t\tpath: \"/\",",
+			"\t\t\tname: \"home\",",
+			"\t\t\tcomponent: PageHome,",
+			"\t\t},",
+			"\t\t//{",
+			"\t\t//\tpath: \"/about\",",
+			"\t\t//\tname: \"about\",",
+			"\t\t//\tcomponent: () => import(\"@/views/page-about/page-about.vue\"),",
+			"\t\t//},",
+			"\t],",
+			"\tscrollBehavior(to, from, savedPosition) {",
+			"\t\tif (to.hash) {",
+			"\t\t\treturn { el: to.hash };",
+			"\t\t}",
+			"",
+			"\t\tif (savedPosition) {",
+			"\t\t\treturn savedPosition;",
+			"\t\t}",
+			"",
+			"\t\treturn { top: 0 };",
+			"\t},",
+			"});",
+			"",
+			"export default router;",
+		],
+	},
+
+	"Vitest spec - component": {
+		"prefix": "specc",
+		"body": [
+			"import { createMount } from \"@unit/support/mount\";",
+			"import { describe, expect, test } from \"vite-plus/test\";",
+			"import ${TM_FILENAME_BASE/(.*)(\\.test)/${1:/pascalcase}/} from \"./${TM_FILENAME_BASE/(.*)(\\.test)/${1:/kebabcase}/}.vue\";",
+			"",
+			"const mount = createMount(${TM_FILENAME_BASE/(.*)(\\.test)/${1:/pascalcase}/});",
+			"",
+			"describe(\"${TM_FILENAME_BASE/(.*)(\\.test)/${1:/kebabcase}/}\", () => {",
+			"\tdescribe(\"Initialisation\", () => {",
+			"\t\ttest(\"A Vue component should exist\", () => {",
+			"\t\t\tconst wrapper = mount();",
+			"",
+			"\t\t\texpect(wrapper.vm).toBeTypeOf(\"object\");",
+			"\t\t});",
+			"\t});",
+			"});",
+		],
+	},
+
+	"Vitest spec - helper": {
+		"prefix": "spech",
+		"body": [
+			"import { describe, expect, test } from \"vite-plus/test\";",
+			"import { ${TM_FILENAME_BASE/(.*)(\\.test)/${1:/camelcase}/} } from \"./${TM_FILENAME_BASE/(.*)(\\.test)/${1:/kebabcase}/}\";",
+			"",
+			"describe(\"${TM_FILENAME_BASE/(.*)(\\.test)/${1:/kebabcase}/}\", () => {",
+			"\ttest(\"\", () => {",
+			"\t\t//",
+			"\t});",
+			"});"
+		],
+	},
+
+	"Vitest spec - composable": {
+		"prefix": "speccl",
+		"body": [
+			"import { describe, expect, test } from \"vite-plus/test\";",
+			"import ${TM_FILENAME_BASE/(.*)(\\.test)/${1:/camelcase}/} from \".\";",
+			"",
+			"describe(\"${TM_FILENAME_BASE/(.*)(\\.test)/${1:/camelcase}/}\", () => {",
+			"\ttest(\"Initialises\", () => {",
+			"\t\tconst response = ${TM_FILENAME_BASE/(.*)(\\.test)/${1:/camelcase}/}();",
+			"\t\t",
+			"\t\texpect(response).toBeTypeOf(\"object\");",
+			"\t});",
+			"",
+			"\ttest(\"\", () => {",
+			"\t\tconst { returned } = ${TM_FILENAME_BASE/(.*)(\\.test)/${1:/camelcase}/}();",
+			"\t});",
+			"});",
+		],
+	},
+
+	"Vitest spec - store": {
+		"prefix": "specs",
+		"body": [
+			"import { beforeEach, describe, expect, test } from \"vite-plus/test\";",
+			"import { setActivePinia, createPinia } from \"pinia\";",
+			"import { use${TM_FILENAME_BASE/(.*)(\\.test)/${1:/pascalcase}/}Store } from \"./${TM_FILENAME_BASE/(.*)(\\.test)/${1:/kebabcase}/}\";",
+			"",
+			"describe(\"use${TM_FILENAME_BASE/(.*)(\\.test)/${1:/pascalcase}/}Store\", () => {",
+			"\tbeforeEach(() => {",
+			"\t\tsetActivePinia(createPinia());",
+			"\t});",
+			"",
+			"\ttest(\"label\", () => {",
+			"\t\tconst store = use${TM_FILENAME_BASE/(.*)(\\.test)/${1:/pascalcase}/}Store();",
+			"\t});",
+			"});",
+		],
+	},
+
+	"Cypress spec - component": {
+		"prefix": "specccy",
+		"body": [
+			"import ${TM_FILENAME_BASE/(.*)(\\.cy)/${1:/pascalcase}/} from \"./${TM_FILENAME_BASE/(.*)(\\.cy)/${1:/kebabcase}/}.vue\";",
+			"import { createMount } from \"@cypress/support/mount\";",
+			"",
+			"const mount = createMount(${TM_FILENAME_BASE/(.*)(\\.cy)/${1:/pascalcase}/});",
+			"",
+			"describe(\"${TM_FILENAME_BASE/(.*)(\\.cy)/${1:/kebabcase}/}\", () => {",
+			"\tit(\"A component is rendered\", () => {",
+			"\t\tmount();",
+			"\t\t",
+			"\t\tcy.getByData(\"${TM_FILENAME_BASE/(.*)(\\.cy)/${1}/}\").shouldBeVisible();",
+			"\t});",
+			"});",
+		],
+	},
+
+	//
+	// Imports
+	//
+
+	"Import string helpers": {
+		"prefix": "importsh",
+		"body": [
+			"import { ${isNonEmptyString} } from \"@lewishowles/helpers/string\";",
+		],
+	},
+
+	"Import array helpers": {
+		"prefix": "importah",
+		"body": [
+			"import { ${isNonEmptyArray} } from \"@lewishowles/helpers/array\";",
+		],
+	},
+
+	"Import object helpers": {
+		"prefix": "importoh",
+		"body": [
+			"import { ${isNonEmptyObject} } from \"@lewishowles/helpers/object\";",
+		],
+	},
+
+	"Import number helpers": {
+		"prefix": "importnh",
+		"body": [
+			"import { ${isNumber} } from \"@lewishowles/helpers/number\";",
+		],
+	},
+
+	"Import general helpers": {
+		"prefix": "importgh",
+		"body": [
+			"import { ${getFriendlyDisplay} } from \"@lewishowles/helpers/general\";",
+		],
+	},
+
+	"Import vue helpers": {
+		"prefix": "importvh",
+		"body": [
+			"import { ${isNonEmptySlot} } from \"@lewishowles/helpers/vue\";",
+		],
+	},
+
+	"Import local helper": {
+		"prefix": "importlh",
+		"body": [
+			"import { ${function} } from \"@/helpers/${folder}\";",
+		],
+	},
+
+	"Import local component": {
+		"prefix": "importlc",
+		"body": [
+			"import ${Component} from \"@/components/${folder}/${file}/${file}.vue\";",
+		],
+	},
+
+	"Import composable": {
+		"prefix": "importc",
+		"body": [
+			"import use${Composable} from \"@/composables/${folder}/use-${file}\";",
+			"",
+			"const { variable } = use${Composable}();",
+		],
+	},
+
+	"Import query": {
+		"prefix": "importq",
+		"body": [
+			"import { use${Composable} } from \"@/queries/${folder}\";",
+			"",
+			"const { variable } = use${Composable}();",
+		],
+	},
+
+	"Import fragment": {
+		"prefix": "importf",
+		"body": [
+			"import ${Component} from \"./fragments/${file}/${file}.vue\";",
+		],
+	},
+
+	"Use i18n": {
+		"prefix": "use18n",
+		"body": [
+			"import { useI18n } from \"vue-i18n\";",
+			"const { t } = useI18n();",
+		],
+	},
+
+	"usei18n": {
+		"prefix": "usei18n",
+		"body": [
+			"import { useI18n } from \"vue-i18n\";",
+			"",
+			"const { t } = useI18n();",
+		]
+	},
+
+	"Use API": {
+		"prefix": "useapi",
+		"body": [
+			"import useApi from \"@/composables/use-api\";",
+			"",
+			"const { get, isLoading, isReady } = useApi();",
+		],
+	},
+
+	"Use modal": {
+		"prefix": "modal",
+		"body": [
+			"import { useModalDialog } from \"@lewishowles/components\";",
+			"import ${Component} from \"@/components/${folder}/${file}/${file}.vue\";",
+			"",
+			"const { openModal } = useModalDialog();",
+			"",
+			"openModal(${Component}, { alertId });",
+		],
+	},
+
+	//
+	// JavaScript helpers
+	//
+
 	"For": {
 		"prefix": "for",
 		"body": [
@@ -157,7 +455,7 @@
 	"Get property value by path": {
 		"prefix": "gpv",
 		"body": [
-			"get(${object}, \"${path}\")";
+			"get(${object}, \"${path}\")",
 		],
 	},
 
@@ -179,29 +477,22 @@
 		],
 	},
 
-	"Function": {
-		"prefix": "func",
+	"Use filtered items": {
+		"prefix": "ufi",
 		"body": [
-			"/**",
-			" * ${comment}",
-			" */",
-			"function closeResults() {",
-			"\t//",
-			"}",
-		],
-	},
-
-	"Function comment": {
-		"prefix": "com",
-		"body": [
-			"/**",
-			" * ${comment}",
-			" */",
+			"import { useFilteredItems } from \"@/composables/data/use-filtered-items\";",
+			"",
+			"// ${comment}",
+			"const {",
+			"\tcount: ${1:items}Count,",
+			"\thave: have${1/(.*)/${1:/pascalcase}/},",
+			"\titems: ${1}",
+			"} = useFilteredItems(${source}, { ${filter} });",
 		],
 	},
 
 	//
-	// Vue
+	// Vue component setup
 	//
 
 	"Props": {
@@ -291,87 +582,6 @@
 		],
 	},
 
-	"Import string helpers": {
-		"prefix": "importsh",
-		"body": [
-			"import { ${isNonEmptyString} } from \"@lewishowles/helpers/string\";",
-		],
-	},
-
-	"Import array helpers": {
-		"prefix": "importah",
-		"body": [
-			"import { ${isNonEmptyArray} } from \"@lewishowles/helpers/array\";",
-		],
-	},
-
-	"Import object helpers": {
-		"prefix": "importoh",
-		"body": [
-			"import { ${isNonEmptyObject} } from \"@lewishowles/helpers/object\";",
-		],
-	},
-
-	"Import number helpers": {
-		"prefix": "importnh",
-		"body": [
-			"import { ${isNumber} } from \"@lewishowles/helpers/number\";",
-		],
-	},
-
-	"Import general helpers": {
-		"prefix": "importgh",
-		"body": [
-			"import { ${getFriendlyDisplay} } from \"@lewishowles/helpers/general\";",
-		],
-	},
-
-	"Import vue helpers": {
-		"prefix": "importvh",
-		"body": [
-			"import { ${isNonEmptySlot} } from \"@lewishowles/helpers/vue\";",
-		],
-	},
-
-	"Import local helper": {
-		"prefix": "importlh",
-		"body": [
-			"import { ${function} } from \"@/helpers/${folder}\";",
-		],
-	},
-
-	"Import local component": {
-		"prefix": "importlc",
-		"body": [
-			"import ${Component} from \"@/components/${folder}/${file}/${file}.vue\";",
-		],
-	},
-
-	"Import composable": {
-		"prefix": "importc",
-		"body": [
-			"import use${Composable} from \"@/composables/${folder}/use-${file}\";",
-			"",
-			"const { variable } = use${Composable}();",
-		],
-	},
-
-	"Import query": {
-		"prefix": "importq",
-		"body": [
-			"import { use${Composable} } from \"@/queries/${folder}\";",
-			"",
-			"const { variable } = use${Composable}();",
-		],
-	},
-
-	"Import fragment": {
-		"prefix": "importf",
-		"body": [
-			"import ${Component} from \"./fragments/${file}/${file}.vue\";",
-		],
-	},
-
 	"Provide": {
 		"prefix": "provide",
 		"body": [
@@ -393,6 +603,20 @@
 		],
 	},
 
+	"Model": {
+		"prefix": ["dm", "model"],
+		"body": [
+			"// .",
+			"const ${variable} = defineModel({",
+			"\ttype: String,",
+			"});",
+		],
+	},
+
+	//
+	// Vue reactivity
+	//
+
 	"Ref": {
 		"prefix": "ref",
 		"body": [
@@ -406,33 +630,6 @@
 		"body": [
 			"// ${comment}",
 			"const ${variable} = computed(() => false);"
-		],
-	},
-
-	"Model": {
-		"prefix": ["dm", "model"],
-		"body": [
-			"// .",
-			"const ${variable} = defineModel({",
-			"\ttype: String,",
-			"});",
-		],
-	},
-
-	"Use i18n": {
-		"prefix": "use18n",
-		"body": [
-			"import { useI18n } from \"vue-i18n\";",
-			"const { t } = useI18n();",
-		],
-	},
-
-	"Use API": {
-		"prefix": "useapi",
-		"body": [
-			"import useApi from \"@/composables/use-api\";",
-			"",
-			"const { get, isLoading, isReady } = useApi();",
 		],
 	},
 
@@ -474,74 +671,9 @@
 		],
 	},
 
-	"Use modal": {
-		"prefix": "modal",
-		"body": [
-			"import { useModalDialog } from \"@lewishowles/components\";",
-			"import ${Component} from \"@/components/${folder}/${file}/${file}.vue\";",
-			"",
-			"const { openModal } = useModalDialog();",
-			"",
-			"openModal(${Component}, { alertId });",
-		],
-	},
-
-	"Composable": {
-		"prefix": "composable",
-		"body": [
-			"import { computed, ref } from \"vue\";",
-			"",
-			"/**",
-			" * ",
-			" */",
-			"export default function ${TM_FILENAME_BASE/(.*)/${1:/camelcase}/}() {",
-			"\treturn {",
-			"\t\t",
-			"\t}",
-			"}",
-		],
-	},
-
 	//
-	// vue-router
+	// Routing shortcuts
 	//
-
-	"Router": {
-		"prefix": "router",
-		"body": [
-			"import { createRouter, createWebHistory } from \"vue-router\";",
-			"import PageHome from \"@/views/page-home/page-home.vue\";",
-			"",
-			"const router = createRouter({",
-			"\thistory: createWebHistory(import.meta.env.BASE_URL),",
-			"\troutes: [",
-			"\t\t{",
-			"\t\t\tpath: \"/\",",
-			"\t\t\tname: \"home\",",
-			"\t\t\tcomponent: PageHome,",
-			"\t\t},",
-			"\t\t//{",
-			"\t\t//\tpath: \"/about\",",
-			"\t\t//\tname: \"about\",",
-			"\t\t//\tcomponent: () => import(\"@/views/page-about/page-about.vue\"),",
-			"\t\t//},",
-			"\t],",
-			"\tscrollBehavior(to, from, savedPosition) {",
-			"\t\tif (to.hash) {",
-			"\t\t\treturn { el: to.hash };",
-			"\t\t}",
-			"",
-			"\t\tif (savedPosition) {",
-			"\t\t\treturn savedPosition;",
-			"\t\t}",
-			"",
-			"\t\treturn { top: 0 };",
-			"\t},",
-			"});",
-			"",
-			"export default router;",
-		],
-	},
 
 	"Router - Push": {
 		"prefix": "route",
@@ -551,20 +683,7 @@
 	},
 
 	//
-	// i18n
-	//
-
-	"usei18n": {
-		"prefix": "usei18n",
-		"body": [
-			"import { useI18n } from \"vue-i18n\";",
-			"",
-			"const { t } = useI18n();",
-		]
-	},
-
-	//
-	// Vitest
+	// Vitest helpers
 	//
 
 	"Describe": {
@@ -643,80 +762,6 @@
 		"body": [
 			"const wrapper = mount();",
 			"const vm = wrapper.vm;",
-		],
-	},
-
-	"Vitest spec - component": {
-		"prefix": "specc",
-		"body": [
-			"import { createMount } from \"@unit/support/mount\";";
-			"import { describe, expect, test } from \"vite-plus/test\";";
-			"import ${TM_FILENAME_BASE/(.*)(\\.test)/${1:/pascalcase}/} from \"./${TM_FILENAME_BASE/(.*)(\\.test)/${1:/kebabcase}/}.vue\";";
-			"";
-			"const mount = createMount(${TM_FILENAME_BASE/(.*)(\\.test)/${1:/pascalcase}/});";
-			"";
-			"describe(\"${TM_FILENAME_BASE/(.*)(\\.test)/${1:/kebabcase}/}\", () => {";
-			"\tdescribe(\"Initialisation\", () => {";
-			"\t\ttest(\"A Vue component should exist\", () => {";
-			"\t\t\tconst wrapper = mount();";
-			"";
-			"\t\t\texpect(wrapper.vm).toBeTypeOf(\"object\");";
-			"\t\t});";
-			"\t});";
-			"});";
-		],
-	},
-
-	"Vitest spec - helper": {
-		"prefix": "spech",
-		"body": [
-			"import { describe, expect, test } from \"vite-plus/test\";",
-			"import { ${TM_FILENAME_BASE/(.*)(\\.test)/${1:/camelcase}/} } from \"./${TM_FILENAME_BASE/(.*)(\\.test)/${1:/kebabcase}/}\";",
-			"",
-			"describe(\"${TM_FILENAME_BASE/(.*)(\\.test)/${1:/kebabcase}/}\", () => {",
-			"\ttest(\"\", () => {",
-			"\t\t//",
-			"\t});",
-			"});"
-		],
-	},
-
-	"Vitest spec - composable": {
-		"prefix": "speccl",
-		"body": [
-			"import { describe, expect, test } from \"vite-plus/test\";",
-			"import ${TM_FILENAME_BASE/(.*)(\\.test)/${1:/camelcase}/} from \".\";",
-			"",
-			"describe(\"${TM_FILENAME_BASE/(.*)(\\.test)/${1:/camelcase}/}\", () => {",
-			"\ttest(\"Initialises\", () => {",
-			"\t\tconst response = ${TM_FILENAME_BASE/(.*)(\\.test)/${1:/camelcase}/}();",
-			"\t\t",
-			"\t\texpect(response).toBeTypeOf(\"object\");",
-			"\t});",
-			"",
-			"\ttest(\"\", () => {",
-			"\t\tconst { returned } = ${TM_FILENAME_BASE/(.*)(\\.test)/${1:/camelcase}/}();",
-			"\t});",
-			"});",
-		],
-	},
-
-	"Vitest spec - store": {
-		"prefix": "specs",
-		"body": [
-			"import { beforeEach, describe, expect, test } from \"vite-plus/test\";",
-			"import { setActivePinia, createPinia } from \"pinia\";",
-			"import { use${TM_FILENAME_BASE/(.*)(\\.test)/${1:/pascalcase}/}Store } from \"./${TM_FILENAME_BASE/(.*)(\\.test)/${1:/kebabcase}/}\";",
-			"",
-			"describe(\"use${TM_FILENAME_BASE/(.*)(\\.test)/${1:/pascalcase}/}Store\", () => {",
-			"\tbeforeEach(() => {",
-			"\t\tsetActivePinia(createPinia());",
-			"\t});",
-			"",
-			"\ttest(\"label\", () => {",
-			"\t\tconst store = use${TM_FILENAME_BASE/(.*)(\\.test)/${1:/pascalcase}/}Store();",
-			"\t});",
-			"});",
 		],
 	},
 
@@ -896,26 +941,8 @@
 	},
 
 	//
-	// Cypress
+	// Cypress helpers
 	//
-
-	"Cypress spec - component": {
-		"prefix": "specccy",
-		"body": [
-			"import ${TM_FILENAME_BASE/(.*)(\\.cy)/${1:/pascalcase}/} from \"./${TM_FILENAME_BASE/(.*)(\\.cy)/${1:/kebabcase}/}.vue\";",
-			"import { createMount } from \"@cypress/support/mount\";",
-			"",
-			"const mount = createMount(${TM_FILENAME_BASE/(.*)(\\.cy)/${1:/pascalcase}/});",
-			"",
-			"describe(\"${TM_FILENAME_BASE/(.*)(\\.cy)/${1:/kebabcase}/}\", () => {";
-			"\tit(\"A component is rendered\", () => {",
-			"\t\tmount();",
-			"\t\t",
-			"\t\tcy.getByData(\"${TM_FILENAME_BASE/(.*)(\\.cy)/${1}/}\").shouldBeVisible();",
-			"\t});",
-			"});",
-		],
-	},
 
 	"Cypress - it": {
 		"prefix": "it",
