@@ -116,7 +116,7 @@
 			"/**",
 			" * ${comment}",
 			" */",
-			"function closeResults() {",
+			"function ${name}() {",
 			"\t//",
 			"}",
 		],
@@ -488,6 +488,19 @@
 			"\thave: have${1/(.*)/${1:/pascalcase}/},",
 			"\titems: ${1}",
 			"} = useFilteredItems(${source}, { ${filter} });",
+		],
+	},
+
+	"Flash messages - send message": {
+		"prefix": "fm",
+		"body": [
+			"const { sendMessage } = useFlashMessages();",
+			"",
+			"sendMessage({",
+			"\tmessage: \"\",",
+			"\tnamespace: NAMESPACE,",
+			"\ttype: \"success\",",
+			"});",
 		],
 	},
 

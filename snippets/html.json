@@ -212,6 +212,11 @@
 		],
 	},
 
+	"Flash messages": {
+		"prefix": "fm",
+		"body": "<flash-messages v-bind\"{ namespace: NAMESPACE }\" />",
+	},
+
 	//
 	// Messaging
 	//
