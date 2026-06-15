@@ -696,6 +696,33 @@
 	},
 
 	//
+	// Pinia Colada
+	//
+
+	"Mutate Pinia Colada query": {
+		"prefix": "mutate",
+		"body": [
+			"/**",
+			" * ...",
+			" *",
+			" * @param  {object}  parameters",
+			" *     ...",
+			" */",
+			"const { mutateAsync: methodName } = useMutation({",
+			"\tmutation: (parameters) => {",
+			"\t\t// ...",
+			"",
+			"\t\treturn patch(\"<endpoint>\", parameters);",
+			"\t},",
+			"",
+			"\tasync onSettled() {",
+			"\t\tawait queryCache.invalidateQueries({ key: ... });",
+			"\t},",
+			"});",
+		],
+	},
+
+	//
 	// Vitest helpers
 	//
 
