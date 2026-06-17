@@ -249,24 +249,6 @@
 		],
 	},
 
-	"Cypress spec - component": {
-		"prefix": "specccy",
-		"body": [
-			"import ${TM_FILENAME_BASE/(.*)(\\.cy)/${1:/pascalcase}/} from \"./${TM_FILENAME_BASE/(.*)(\\.cy)/${1:/kebabcase}/}.vue\";",
-			"import { createMount } from \"@cypress/support/mount\";",
-			"",
-			"const mount = createMount(${TM_FILENAME_BASE/(.*)(\\.cy)/${1:/pascalcase}/});",
-			"",
-			"describe(\"${TM_FILENAME_BASE/(.*)(\\.cy)/${1:/kebabcase}/}\", () => {",
-			"\tit(\"A component is rendered\", () => {",
-			"\t\tmount();",
-			"\t\t",
-			"\t\tcy.getByData(\"${TM_FILENAME_BASE/(.*)(\\.cy)/${1}/}\").shouldBeVisible();",
-			"\t});",
-			"});",
-		],
-	},
-
 	//
 	// Imports
 	//
@@ -977,97 +959,6 @@
 		"prefix": "flush",
 		"body": [
 			"import { flushPromises } from \"@vue/test-utils\""
-		],
-	},
-
-	//
-	// Cypress helpers
-	//
-
-	"Cypress - it": {
-		"prefix": "it",
-		"body": [
-			"it(\"${label}\", () => {",
-			"\tmount();",
-			"});",
-		],
-	},
-
-	"Cypress - Get by data": {
-		"prefix": ["fbd", "gbd"],
-		"body": [
-			"cy.getByData(\"${TM_FILENAME_BASE/(.*)(\\.cy)/${1}/}-${element}\")",
-		],
-	},
-
-	"Cypress - Get form field": {
-		"prefix": ["gff", "gfe"],
-		"body": [
-			"cy.getFormField(\"${selector}\")",
-		],
-	},
-
-	"Cypress - Fill form field": {
-		"prefix": ["fff", "ffe"],
-		"body": [
-			"cy.fillFormField(\"${selector}\", \"${value}\")",
-		],
-	},
-
-	"Cypress - Should not exist": {
-		"prefix": "sne",
-		"body": [
-			"cy.getByData(\"${TM_FILENAME_BASE/(.*)(\\.cy)/${1}/}-${element}\").should(\"not.exist\");",
-		],
-	},
-
-	"Cypress - Should be visible": {
-		"prefix": "sbv",
-		"body": [
-			"cy.getByData(\"${TM_FILENAME_BASE/(.*)(\\.cy)/${1}/}-${element}\").shouldBeVisible();",
-		],
-	},
-
-	"Cypress - Should not be visible": {
-		"prefix": "snbv",
-		"body": [
-			"cy.getByData(\"${TM_FILENAME_BASE/(.*)(\\.cy)/${1}/}-${element}\").shouldNotBeVisible();",
-		],
-	},
-
-	"Cypress - Should have count": {
-		"prefix": "shc",
-		"body": [
-			"cy.getByData(\"${TM_FILENAME_BASE/(.*)(\\.cy)/${1}/}-${element}\").shouldHaveCount(${count});",
-		],
-	},
-
-	"Cypress - Should have text": {
-		"prefix": "sht",
-		"body": [
-			"cy.getByData(\"${TM_FILENAME_BASE/(.*)(\\.cy)/${1}/}-${element}\").shouldHaveText(${text});",
-		],
-	},
-
-	"Cypress - Click": {
-		"prefix": "click",
-		"body": [
-			"cy.getByData(\"${TM_FILENAME_BASE/(.*)(\\.cy)/${1}/}-${element}\").click();",
-		],
-	},
-
-	"Cypress - URL": {
-		"prefix": ["shr", "shu", "url"],
-		"body": [
-			"cy.url().should(\"eq\", \"\");",
-		],
-	},
-
-	"Cypress - Intercept": {
-		"prefix": "intercept",
-		"body": [
-			"cy.intercept(\"GET\", \"\", {}).as(\"request\");",
-			"cy.wait(\"@request\");",
 		],
 	},
 }
