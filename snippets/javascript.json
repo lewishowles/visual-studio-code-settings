@@ -1,127 +1,20 @@
 {
-	//
-	// Documentation
-	//
-
-	"Function comment": {
-		"prefix": "com",
+	"After each": {
+		"prefix": "ae",
 		"body": [
-			"/**",
-			" * ${comment}",
-			" */",
-		],
-	},
-
-	"Function parameter (Typescript)": {
-		"prefix": "paramt",
-		"body": [
-			"@param  ${1:name}",
-			"*     ${2:description}",
-		],
-	},
-
-	"Function parameter": {
-		"prefix": "param",
-		"body": [
-			"@param  {${1:type}}  ${2:name}",
-			"*     ${3:description}",
-		],
-	},
-
-	"Function parameter (string)": {
-		"prefix": "params",
-		"body": [
-			"@param  {string}  ${1:name}",
-			"*     ${2:description}",
-		],
-	},
-
-	"Function parameter (array)": {
-		"prefix": "parama",
-		"body": [
-			"@param  {array}  ${1:name}",
-			"*     ${2:description}",
-		],
-	},
-
-	"Function parameter (object)": {
-		"prefix": "paramo",
-		"body": [
-			"@param  {object}  ${1:name}",
-			"*     ${2:description}",
-		],
-	},
-
-	"Function parameter (number)": {
-		"prefix": "paramn",
-		"body": [
-			"@param  {number}  ${1:name}",
-			"*     ${2:description}",
-		],
-	},
-
-	"Function parameter (boolean)": {
-		"prefix": "paramb",
-		"body": [
-			"@param  {boolean}  ${1:name}",
-			"*     ${2:description}",
-		],
-	},
-
-	"Function parameter (options)": {
-		"prefix": "paramop",
-		"body": [
-			"@param  {object}  options",
-			"*     Additional options",
-			"* @param  {${1:type}}  options.${2:name}",
-			"*     ${3:description}",
-		],
-	},
-
-	"Function returns (Typescript)": {
-		"prefix": "returnst",
-		"body": [
-			"@returns",
-			"*     ${2:description}",
-		],
-	},
-
-	"Function returns": {
-		"prefix": "returns",
-		"body": [
-			"@returns  {${1:type}}",
-			"*     ${2:description}",
-		],
-	},
-
-	//
-	// Scaffolding
-	//
-
-	"Helper function": {
-		"prefix": "helper",
-		"body": [
-			"/**",
-			" * ",
-			" */",
-			"export function ${TM_FILENAME_BASE/(.*)/${1:/camelcase}/}() {",
+			"afterEach(() => {",
 			"\t",
-			"}",
-		],
+			"});"
+		]
 	},
-
-	"Function": {
-		"prefix": "func",
+	"Before each": {
+		"prefix": "be",
 		"body": [
-			"/**",
-			" * ${comment}",
-			" */",
-			"function ${name}() {",
-			"\t//",
-			"}",
-		],
+			"beforeEach(() => {",
+			"\t",
+			"});"
+		]
 	},
-
 	"Composable": {
 		"prefix": "composable",
 		"body": [
@@ -134,10 +27,441 @@
 			"\treturn {",
 			"\t\t",
 			"\t}",
-			"}",
+			"}"
+		]
+	},
+	"Computed property": {
+		"prefix": "computed",
+		"body": [
+			"// ${comment}",
+			"const ${variable} = computed(() => false);"
+		]
+	},
+	"Define Emits": {
+		"prefix": "emits",
+		"body": [
+			"const emit = defineEmits([\"\"]);"
+		]
+	},
+	"Describe": {
+		"prefix": "desc",
+		"body": [
+			"describe(\"${1:label}\", () => {",
+			"\t",
+			"});"
+		]
+	},
+	"Flash messages - send message": {
+		"prefix": "fm",
+		"body": [
+			"const { sendMessage } = useFlashMessages();",
+			"",
+			"sendMessage({",
+			"\tmessage: \"\",",
+			"\tnamespace: NAMESPACE,",
+			"\ttype: \"success\",",
+			"});"
+		]
+	},
+	"For": {
+		"prefix": "for",
+		"body": [
+			"for (let i = 0; i < ${array}.length; i++) {",
+			"\t",
+			"}"
+		]
+	},
+	"For each": {
+		"prefix": "fe",
+		"body": [
+			"${variable}.forEach(${item} => {",
+			"\t",
+			"});"
+		]
+	},
+	"For in": {
+		"prefix": "fi",
+		"body": [
+			"for (const key in ${object}) {",
+			"\tif (!Object.hasOwn(${object}, key)) {",
+			"\t\tcontinue;",
+			"\t}",
+			"",
+			"\tconst value = ${object}[key];",
+			"}"
+		]
+	},
+	"For of": {
+		"prefix": "fo",
+		"body": [
+			"for (const ${value} of ${values}) {",
+			"\t",
+			"}"
+		]
+	},
+	"Function": {
+		"prefix": "func",
+		"body": [
+			"/**",
+			" * ${comment}",
+			" */",
+			"function ${name}() {",
+			"\t//",
+			"}"
+		]
+	},
+	"Function comment": {
+		"prefix": "com",
+		"body": [
+			"/**",
+			" * ${comment}",
+			" */"
+		]
+	},
+	"Function parameter": {
+		"prefix": "param",
+		"body": [
+			"@param  {${1:type}}  ${2:name}",
+			"*     ${3:description}"
+		]
+	},
+	"Function parameter (array)": {
+		"prefix": "parama",
+		"body": [
+			"@param  {array}  ${1:name}",
+			"*     ${2:description}"
+		]
+	},
+	"Function parameter (boolean)": {
+		"prefix": "paramb",
+		"body": [
+			"@param  {boolean}  ${1:name}",
+			"*     ${2:description}"
+		]
+	},
+	"Function parameter (number)": {
+		"prefix": "paramn",
+		"body": [
+			"@param  {number}  ${1:name}",
+			"*     ${2:description}"
+		]
+	},
+	"Function parameter (object)": {
+		"prefix": "paramo",
+		"body": [
+			"@param  {object}  ${1:name}",
+			"*     ${2:description}"
+		]
+	},
+	"Function parameter (options)": {
+		"prefix": "paramop",
+		"body": [
+			"@param  {object}  options",
+			"*     Additional options",
+			"* @param  {${1:type}}  options.${2:name}",
+			"*     ${3:description}"
+		]
+	},
+	"Function parameter (string)": {
+		"prefix": "params",
+		"body": [
+			"@param  {string}  ${1:name}",
+			"*     ${2:description}"
+		]
+	},
+	"Function parameter (Typescript)": {
+		"prefix": "paramt",
+		"body": [
+			"@param  ${1:name}",
+			"*     ${2:description}"
+		]
+	},
+	"Function returns": {
+		"prefix": "returns",
+		"body": [
+			"@returns  {${1:type}}",
+			"*     ${2:description}"
+		]
+	},
+	"Function returns (Typescript)": {
+		"prefix": "returnst",
+		"body": [
+			"@returns",
+			"*     ${2:description}"
+		]
+	},
+	"Get property value by path": {
+		"prefix": "gpv",
+		"body": [
+			"get(${object}, \"${path}\")"
+		]
+	},
+	"Has own property": {
+		"prefix": "hop",
+		"body": [
+			"Object.hasOwn(${object}, \"${property}\")"
+		]
+	},
+	"Have slot": {
+		"prefix": "haveslot",
+		"body": [
+			"const slots = useSlots();",
+			"//",
+			"const have${Slot} = computed(() => isNonEmptySlot(slots.${slot}));"
+		]
+	},
+	"Helper function": {
+		"prefix": "helper",
+		"body": [
+			"/**",
+			" * ",
+			" */",
+			"export function ${TM_FILENAME_BASE/(.*)/${1:/camelcase}/}() {",
+			"\t",
+			"}"
+		]
+	},
+	"Import array helpers": {
+		"prefix": "importah",
+		"body": [
+			"import { ${isNonEmptyArray} } from \"@lewishowles/helpers/array\";"
+		]
+	},
+	"Import composable": {
+		"prefix": "importc",
+		"body": [
+			"import use${Composable} from \"@/composables/${folder}/use-${file}\";",
+			"",
+			"const { variable } = use${Composable}();"
+		]
+	},
+	"Import fragment": {
+		"prefix": "importf",
+		"body": [
+			"import ${Component} from \"./fragments/${file}/${file}.vue\";"
+		]
+	},
+	"Import general helpers": {
+		"prefix": "importgh",
+		"body": [
+			"import { ${getFriendlyDisplay} } from \"@lewishowles/helpers/general\";"
+		]
+	},
+	"Import local component": {
+		"prefix": "importlc",
+		"body": [
+			"import ${Component} from \"@/components/${folder}/${file}/${file}.vue\";"
+		]
+	},
+	"Import local helper": {
+		"prefix": "importlh",
+		"body": [
+			"import { ${function} } from \"@/helpers/${folder}\";"
+		]
+	},
+	"Import number helpers": {
+		"prefix": "importnh",
+		"body": [
+			"import { ${isNumber} } from \"@lewishowles/helpers/number\";"
+		]
+	},
+	"Import object helpers": {
+		"prefix": "importoh",
+		"body": [
+			"import { ${isNonEmptyObject} } from \"@lewishowles/helpers/object\";"
+		]
+	},
+	"Import query": {
+		"prefix": "importq",
+		"body": [
+			"import { use${Composable} } from \"@/queries/${folder}\";",
+			"",
+			"const { variable } = use${Composable}();"
+		]
+	},
+	"Import string helpers": {
+		"prefix": "importsh",
+		"body": [
+			"import { ${isNonEmptyString} } from \"@lewishowles/helpers/string\";"
+		]
+	},
+	"Import vue helpers": {
+		"prefix": "importvh",
+		"body": [
+			"import { ${isNonEmptySlot} } from \"@lewishowles/helpers/vue\";"
+		]
+	},
+	"Inject": {
+		"prefix": "inject",
+		"body": [
+			"const {} = inject(\"\");"
+		]
+	},
+	"Map": {
+		"prefix": "map",
+		"body": [
+			"${items}.map(${item} => {",
+			"\t",
+			"});"
+		]
+	},
+	"Model": {
+		"prefix": [
+			"dm",
+			"model"
+		],
+		"body": [
+			"// .",
+			"const ${variable} = defineModel({",
+			"\ttype: String,",
+			"});"
+		]
+	},
+	"Mutate Pinia Colada query": {
+		"prefix": "mutate",
+		"body": [
+			"/**",
+			" * ...",
+			" *",
+			" * @param  {object}  parameters",
+			" *     ...",
+			" */",
+			"const { mutateAsync: methodName } = useMutation({",
+			"\tmutation: (parameters) => {",
+			"\t\t// ...",
+			"",
+			"\t\treturn patch(\"<endpoint>\", parameters);",
+			"\t},",
+			"",
+			"\tasync onSettled() {",
+			"\t\tawait queryCache.invalidateQueries({ key: ... });",
+			"\t},",
+			"});"
+		]
+	},
+	"Playwright - describe": {
+		"prefix": ["pwdesc", "descpw"],
+		"body": [
+			"test.describe(\"${1:label}\", () => {",
+			"\t",
+			"});",
 		],
 	},
-
+	"Playwright - test": {
+		"prefix": [
+			"pwtest",
+			"testpw"
+		],
+		"description": "Scaffold a test for Playwright",
+		"body": [
+			"test(\"\", async ({ mount, page }) => {",
+			"\tawait mountComponent(mount);",
+			"",
+			"\tawait expect(page.getByTestId(\"\"));",
+			"});"
+		]
+	},
+	"Prop": {
+		"prefix": "prop",
+		"body": [
+			"/**",
+			" * ${desc}.",
+			" */",
+			"${prop}: {",
+			"\ttype: String,",
+			"\tdefault: null,",
+			"},"
+		]
+	},
+	"Prop - array": {
+		"prefix": "propa",
+		"body": [
+			"/**",
+			" * ${desc}.",
+			" */",
+			"${prop}: {",
+			"\ttype: Array,",
+			"\tdefault: () => [],",
+			"},"
+		]
+	},
+	"Prop - boolean": {
+		"prefix": "propb",
+		"body": [
+			"/**",
+			" * ${desc}.",
+			" */",
+			"${prop}: {",
+			"\ttype: Boolean,",
+			"\tdefault: false,",
+			"},"
+		]
+	},
+	"Prop - number": {
+		"prefix": "propn",
+		"body": [
+			"/**",
+			" * ${desc}.",
+			" */",
+			"${prop}: {",
+			"\ttype: Number,",
+			"\tdefault: 0,",
+			"},"
+		]
+	},
+	"Prop - object": {
+		"prefix": "propo",
+		"body": [
+			"/**",
+			" * ${desc}.",
+			" */",
+			"${prop}: {",
+			"\ttype: Object,",
+			"\tdefault: () => ({}),",
+			"},"
+		]
+	},
+	"Prop - required": {
+		"prefix": "propr",
+		"body": [
+			"/**",
+			" * ${desc}.",
+			" */",
+			"${prop}: {",
+			"\ttype: String,",
+			"\trequired: true,",
+			"},"
+		]
+	},
+	"Props": {
+		"prefix": "props",
+		"body": [
+			"const props = defineProps({",
+			"",
+			"});"
+		]
+	},
+	"Provide": {
+		"prefix": "provide",
+		"body": [
+			"provide(\"${TM_FILENAME_BASE}\", {});"
+		]
+	},
+	"Reduce": {
+		"prefix": "reduce",
+		"body": [
+			"${array}.reduce((${accumulator}, ${item}) => {",
+			"\treturn ${accumulator};",
+			"}, []);"
+		]
+	},
+	"Ref": {
+		"prefix": "ref",
+		"body": [
+			"// ${comment}",
+			"const ${variable} = ref();"
+		]
+	},
 	"Router": {
 		"prefix": "router",
 		"body": [
@@ -171,283 +495,15 @@
 			"\t},",
 			"});",
 			"",
-			"export default router;",
-		],
-	},
-
-	"Vitest spec - component": {
-		"prefix": "specc",
-		"body": [
-			"import { createMount } from \"@unit/support/mount\";",
-			"import { describe, expect, test } from \"vite-plus/test\";",
-			"import ${TM_FILENAME_BASE/(.*)(\\.test)/${1:/pascalcase}/} from \"./${TM_FILENAME_BASE/(.*)(\\.test)/${1:/kebabcase}/}.vue\";",
-			"",
-			"const mount = createMount(${TM_FILENAME_BASE/(.*)(\\.test)/${1:/pascalcase}/});",
-			"",
-			"describe(\"${TM_FILENAME_BASE/(.*)(\\.test)/${1:/kebabcase}/}\", () => {",
-			"\tdescribe(\"Initialisation\", () => {",
-			"\t\ttest(\"A Vue component should exist\", () => {",
-			"\t\t\tconst wrapper = mount();",
-			"",
-			"\t\t\texpect(wrapper.vm).toBeTypeOf(\"object\");",
-			"\t\t});",
-			"\t});",
-			"});",
-		],
-	},
-
-	"Vitest spec - helper": {
-		"prefix": "spech",
-		"body": [
-			"import { describe, expect, test } from \"vite-plus/test\";",
-			"import { ${TM_FILENAME_BASE/(.*)(\\.test)/${1:/camelcase}/} } from \"./${TM_FILENAME_BASE/(.*)(\\.test)/${1:/kebabcase}/}\";",
-			"",
-			"describe(\"${TM_FILENAME_BASE/(.*)(\\.test)/${1:/kebabcase}/}\", () => {",
-			"\ttest(\"\", () => {",
-			"\t\t//",
-			"\t});",
-			"});"
-		],
-	},
-
-	"Vitest spec - composable": {
-		"prefix": "speccl",
-		"body": [
-			"import { describe, expect, test } from \"vite-plus/test\";",
-			"import ${TM_FILENAME_BASE/(.*)(\\.test)/${1:/camelcase}/} from \".\";",
-			"",
-			"describe(\"${TM_FILENAME_BASE/(.*)(\\.test)/${1:/camelcase}/}\", () => {",
-			"\ttest(\"Initialises\", () => {",
-			"\t\tconst response = ${TM_FILENAME_BASE/(.*)(\\.test)/${1:/camelcase}/}();",
-			"\t\t",
-			"\t\texpect(response).toBeTypeOf(\"object\");",
-			"\t});",
-			"",
-			"\ttest(\"\", () => {",
-			"\t\tconst { returned } = ${TM_FILENAME_BASE/(.*)(\\.test)/${1:/camelcase}/}();",
-			"\t});",
-			"});",
-		],
-	},
-
-	"Vitest spec - store": {
-		"prefix": "specs",
-		"body": [
-			"import { beforeEach, describe, expect, test } from \"vite-plus/test\";",
-			"import { setActivePinia, createPinia } from \"pinia\";",
-			"import { use${TM_FILENAME_BASE/(.*)(\\.test)/${1:/pascalcase}/}Store } from \"./${TM_FILENAME_BASE/(.*)(\\.test)/${1:/kebabcase}/}\";",
-			"",
-			"describe(\"use${TM_FILENAME_BASE/(.*)(\\.test)/${1:/pascalcase}/}Store\", () => {",
-			"\tbeforeEach(() => {",
-			"\t\tsetActivePinia(createPinia());",
-			"\t});",
-			"",
-			"\ttest(\"label\", () => {",
-			"\t\tconst store = use${TM_FILENAME_BASE/(.*)(\\.test)/${1:/pascalcase}/}Store();",
-			"\t});",
-			"});",
-		],
-	},
-
-	//
-	// Imports
-	//
-
-	"Import string helpers": {
-		"prefix": "importsh",
-		"body": [
-			"import { ${isNonEmptyString} } from \"@lewishowles/helpers/string\";",
-		],
-	},
-
-	"Import array helpers": {
-		"prefix": "importah",
-		"body": [
-			"import { ${isNonEmptyArray} } from \"@lewishowles/helpers/array\";",
-		],
-	},
-
-	"Import object helpers": {
-		"prefix": "importoh",
-		"body": [
-			"import { ${isNonEmptyObject} } from \"@lewishowles/helpers/object\";",
-		],
-	},
-
-	"Import number helpers": {
-		"prefix": "importnh",
-		"body": [
-			"import { ${isNumber} } from \"@lewishowles/helpers/number\";",
-		],
-	},
-
-	"Import general helpers": {
-		"prefix": "importgh",
-		"body": [
-			"import { ${getFriendlyDisplay} } from \"@lewishowles/helpers/general\";",
-		],
-	},
-
-	"Import vue helpers": {
-		"prefix": "importvh",
-		"body": [
-			"import { ${isNonEmptySlot} } from \"@lewishowles/helpers/vue\";",
-		],
-	},
-
-	"Import local helper": {
-		"prefix": "importlh",
-		"body": [
-			"import { ${function} } from \"@/helpers/${folder}\";",
-		],
-	},
-
-	"Import local component": {
-		"prefix": "importlc",
-		"body": [
-			"import ${Component} from \"@/components/${folder}/${file}/${file}.vue\";",
-		],
-	},
-
-	"Import composable": {
-		"prefix": "importc",
-		"body": [
-			"import use${Composable} from \"@/composables/${folder}/use-${file}\";",
-			"",
-			"const { variable } = use${Composable}();",
-		],
-	},
-
-	"Import query": {
-		"prefix": "importq",
-		"body": [
-			"import { use${Composable} } from \"@/queries/${folder}\";",
-			"",
-			"const { variable } = use${Composable}();",
-		],
-	},
-
-	"Import fragment": {
-		"prefix": "importf",
-		"body": [
-			"import ${Component} from \"./fragments/${file}/${file}.vue\";",
-		],
-	},
-
-	"Use i18n": {
-		"prefix": "use18n",
-		"body": [
-			"import { useI18n } from \"vue-i18n\";",
-			"const { t } = useI18n();",
-		],
-	},
-
-	"usei18n": {
-		"prefix": "usei18n",
-		"body": [
-			"import { useI18n } from \"vue-i18n\";",
-			"",
-			"const { t } = useI18n();",
+			"export default router;"
 		]
 	},
-
-	"Use API": {
-		"prefix": "useapi",
+	"Router - Push": {
+		"prefix": "route",
 		"body": [
-			"import useApi from \"@/composables/use-api\";",
-			"",
-			"const { get, isLoading, isReady } = useApi();",
-		],
+			"router.push({ name: \"home\" });"
+		]
 	},
-
-	"Use modal": {
-		"prefix": "modal",
-		"body": [
-			"import { useModalDialog } from \"@lewishowles/components\";",
-			"import ${Component} from \"@/components/${folder}/${file}/${file}.vue\";",
-			"",
-			"const { openModal } = useModalDialog();",
-			"",
-			"openModal(${Component}, { alertId });",
-		],
-	},
-
-	//
-	// JavaScript helpers
-	//
-
-	"For": {
-		"prefix": "for",
-		"body": [
-			"for (let i = 0; i < ${array}.length; i++) {",
-			"\t",
-			"}",
-		],
-	},
-
-	"For each": {
-		"prefix": "fe",
-		"body": [
-			"${variable}.forEach(${item} => {",
-			"\t",
-			"});",
-		],
-	},
-
-	"Map": {
-		"prefix": "map",
-		"body": [
-			"${items}.map(${item} => {",
-			"\t",
-			"});",
-		],
-	},
-
-	"For in": {
-		"prefix": "fi",
-		"body": [
-			"for (const key in ${object}) {",
-			"\tif (!Object.hasOwn(${object}, key)) {",
-			"\t\tcontinue;",
-			"\t}",
-			"",
-			"\tconst value = ${object}[key];",
-			"}",
-		],
-	},
-
-	"For of": {
-		"prefix": "fo",
-		"body": [
-			"for (const ${value} of ${values}) {",
-			"\t",
-			"}",
-		],
-	},
-
-	"Reduce": {
-		"prefix": "reduce",
-		"body": [
-			"${array}.reduce((${accumulator}, ${item}) => {",
-			"\treturn ${accumulator};",
-			"}, []);",
-		],
-	},
-
-	"Get property value by path": {
-		"prefix": "gpv",
-		"body": [
-			"get(${object}, \"${path}\")",
-		],
-	},
-
-	"Has own property": {
-		"prefix": "hop",
-		"body": [
-			"Object.hasOwn(${object}, \"${property}\")",
-		],
-	},
-
 	"Try / catch": {
 		"prefix": "try",
 		"body": [
@@ -455,10 +511,17 @@
 			"\t",
 			"} catch (error) {",
 			"\tconsole.error(\"${TM_FILENAME_BASE}[${function}]: ${message}.\");",
-			"}",
-		],
+			"}"
+		]
 	},
-
+	"Use API": {
+		"prefix": "useapi",
+		"body": [
+			"import useApi from \"@/composables/use-api\";",
+			"",
+			"const { get, isLoading, isReady } = useApi();"
+		]
+	},
 	"Use filtered items": {
 		"prefix": "ufi",
 		"body": [
@@ -469,174 +532,16 @@
 			"\tcount: ${1:items}Count,",
 			"\thave: have${1/(.*)/${1:/pascalcase}/},",
 			"\titems: ${1}",
-			"} = useFilteredItems(${source}, { ${filter} });",
-		],
+			"} = useFilteredItems(${source}, { ${filter} });"
+		]
 	},
-
-	"Flash messages - send message": {
-		"prefix": "fm",
+	"Use i18n": {
+		"prefix": "use18n",
 		"body": [
-			"const { sendMessage } = useFlashMessages();",
-			"",
-			"sendMessage({",
-			"\tmessage: \"\",",
-			"\tnamespace: NAMESPACE,",
-			"\ttype: \"success\",",
-			"});",
-		],
+			"import { useI18n } from \"vue-i18n\";",
+			"const { t } = useI18n();"
+		]
 	},
-
-	//
-	// Vue component setup
-	//
-
-	"Props": {
-		"prefix": "props",
-		"body": [
-			"const props = defineProps({",
-			"",
-			"});",
-		],
-	},
-
-	"Prop": {
-		"prefix": "prop",
-		"body": [
-			"/**",
-			" * ${desc}.",
-			" */",
-			"${prop}: {",
-			"\ttype: String,",
-			"\tdefault: null,",
-			"},",
-		],
-	},
-
-	"Prop - boolean": {
-		"prefix": "propb",
-		"body": [
-			"/**",
-			" * ${desc}.",
-			" */",
-			"${prop}: {",
-			"\ttype: Boolean,",
-			"\tdefault: false,",
-			"},",
-		],
-	},
-
-	"Prop - number": {
-		"prefix": "propn",
-		"body": [
-			"/**",
-			" * ${desc}.",
-			" */",
-			"${prop}: {",
-			"\ttype: Number,",
-			"\tdefault: 0,",
-			"},",
-		],
-	},
-
-	"Prop - required": {
-		"prefix": "propr",
-		"body": [
-			"/**",
-			" * ${desc}.",
-			" */",
-			"${prop}: {",
-			"\ttype: String,",
-			"\trequired: true,",
-			"},",
-		],
-	},
-
-	"Prop - array": {
-		"prefix": "propa",
-		"body": [
-			"/**",
-			" * ${desc}.",
-			" */",
-			"${prop}: {",
-			"\ttype: Array,",
-			"\tdefault: () => [],",
-			"},",
-		],
-	},
-
-	"Prop - object": {
-		"prefix": "propo",
-		"body": [
-			"/**",
-			" * ${desc}.",
-			" */",
-			"${prop}: {",
-			"\ttype: Object,",
-			"\tdefault: () => ({}),",
-			"},",
-		],
-	},
-
-	"Provide": {
-		"prefix": "provide",
-		"body": [
-			"provide(\"${TM_FILENAME_BASE}\", {});",
-		],
-	},
-
-	"Inject": {
-		"prefix": "inject",
-		"body": [
-			"const {} = inject(\"\");",
-		],
-	},
-
-	"Define Emits": {
-		"prefix": "emits",
-		"body": [
-			"const emit = defineEmits([\"\"]);",
-		],
-	},
-
-	"Model": {
-		"prefix": ["dm", "model"],
-		"body": [
-			"// .",
-			"const ${variable} = defineModel({",
-			"\ttype: String,",
-			"});",
-		],
-	},
-
-	//
-	// Vue reactivity
-	//
-
-	"Ref": {
-		"prefix": "ref",
-		"body": [
-			"// ${comment}",
-			"const ${variable} = ref();"
-		],
-	},
-
-	"Computed property": {
-		"prefix": "computed",
-		"body": [
-			"// ${comment}",
-			"const ${variable} = computed(() => false);"
-		],
-	},
-
-	"Have slot": {
-		"prefix": "haveslot",
-		"body": [
-			"const slots = useSlots();",
-			"//",
-			"const have${Slot} = computed(() => isNonEmptySlot(slots.${slot}));",
-		],
-	},
-
 	"Use intersection observer": {
 		"prefix": "useobserve",
 		"body": [
@@ -653,145 +558,28 @@
 			"\tif (isIntersecting) {",
 			"\t\tstop();",
 			"\t}",
-			"}, { threshold: 0.3 });",
-		],
+			"}, { threshold: 0.3 });"
+		]
 	},
-
-	"Watch": {
-		"prefix": "watch",
+	"Use modal": {
+		"prefix": "modal",
 		"body": [
-			"watch(${ref}, () => {",
-			"\t",
-			"});",
-		],
-	},
-
-	//
-	// Routing shortcuts
-	//
-
-	"Router - Push": {
-		"prefix": "route",
-		"body": [
-			"router.push({ name: \"home\" });",
-		],
-	},
-
-	//
-	// Pinia Colada
-	//
-
-	"Mutate Pinia Colada query": {
-		"prefix": "mutate",
-		"body": [
-			"/**",
-			" * ...",
-			" *",
-			" * @param  {object}  parameters",
-			" *     ...",
-			" */",
-			"const { mutateAsync: methodName } = useMutation({",
-			"\tmutation: (parameters) => {",
-			"\t\t// ...",
+			"import { useModalDialog } from \"@lewishowles/components\";",
+			"import ${Component} from \"@/components/${folder}/${file}/${file}.vue\";",
 			"",
-			"\t\treturn patch(\"<endpoint>\", parameters);",
-			"\t},",
+			"const { openModal } = useModalDialog();",
 			"",
-			"\tasync onSettled() {",
-			"\t\tawait queryCache.invalidateQueries({ key: ... });",
-			"\t},",
-			"});",
-		],
+			"openModal(${Component}, { alertId });"
+		]
 	},
-
-	//
-	// Vitest helpers
-	//
-
-	"Describe": {
-		"prefix": "desc",
+	"usei18n": {
+		"prefix": "usei18n",
 		"body": [
-			"describe(\"${1:label}\", () => {",
-			"\t",
-			"});",
-		],
+			"import { useI18n } from \"vue-i18n\";",
+			"",
+			"const { t } = useI18n();"
+		]
 	},
-
-	"Before each": {
-		"prefix": "be",
-		"body": [
-			"beforeEach(() => {",
-			"\t",
-			"});",
-		],
-	},
-
-	"After each": {
-		"prefix": "ae",
-		"body": [
-			"afterEach(() => {",
-			"\t",
-			"});",
-		],
-	},
-
-	"Vitest - test": {
-		"prefix": "test",
-		"body": [
-			"test(\"${label}\", () => {",
-			"\tconst wrapper = mount();",
-			"\tconst vm = wrapper.vm;",
-			"});",
-		],
-	},
-
-	"Vitest - test (helper)": {
-		"prefix": ["testf", "testh"],
-		"body": [
-			"test(\"${label}\", () => {",
-			"\texpect(${TM_FILENAME_BASE/(.*)(\\.test)/${1:/camelcase}/}()).toBe();",
-			"});",
-		],
-	},
-
-	"Vitest - test (composable)": {
-		"prefix": ["testc"],
-		"body": [
-			"test(\"${label}\", () => {",
-			"\tconst { prop } = ${TM_FILENAME_BASE/(.*)(\\.test)/${1:/camelcase}/}();",
-			"});",
-		],
-	},
-
-	"Vitest - test (async)": {
-		"prefix": "testa",
-		"body": [
-			"test(\"${label}\", async() => {",
-			"\texpect(${TM_FILENAME_BASE/(.*)(\\.test)/${1:/camelcase}/}()).toBe();",
-			"});",
-		],
-	},
-
-	"Vitest - mount": {
-		"prefix": "wrapper",
-		"body": [
-			"const wrapper = mount();",
-		],
-	},
-
-	"Vitest - mount with vm": {
-		"prefix": "wrapperv",
-		"body": [
-			"const wrapper = mount();",
-			"const vm = wrapper.vm;",
-		],
-	},
-
-	"Vitest - Mock Api": {
-		"prefix": "mockapi",
-		"body": "import mockApi from \"@test/unit/support/mock-api\";",
-	},
-
 	"Vitest - Mock": {
 		"prefix": "mock",
 		"body": [
@@ -801,10 +589,76 @@
 			"\tdefault: () => ({",
 			"\t\t${methodName}: mock${methodName},",
 			"\t}),",
-			"}));",
-		],
+			"}));"
+		]
 	},
-
+	"Vitest - Mock Api": {
+		"prefix": "mockapi",
+		"body": "import mockApi from \"@test/unit/support/mock-api\";"
+	},
+	"Vitest - mount": {
+		"prefix": "wrapper",
+		"body": [
+			"const wrapper = mount();"
+		]
+	},
+	"Vitest - mount with vm": {
+		"prefix": "wrapperv",
+		"body": [
+			"const wrapper = mount();",
+			"const vm = wrapper.vm;"
+		]
+	},
+	"Vitest - test": {
+		"prefix": "test",
+		"body": [
+			"test(\"${label}\", () => {",
+			"\tconst wrapper = mount();",
+			"\tconst vm = wrapper.vm;",
+			"});"
+		]
+	},
+	"Vitest - test (async)": {
+		"prefix": "testa",
+		"body": [
+			"test(\"${label}\", async() => {",
+			"\texpect(${TM_FILENAME_BASE/(.*)(\\.test)/${1:/camelcase}/}()).toBe();",
+			"});"
+		]
+	},
+	"Vitest - test (composable)": {
+		"prefix": [
+			"testc"
+		],
+		"body": [
+			"test(\"${label}\", () => {",
+			"\tconst { prop } = ${TM_FILENAME_BASE/(.*)(\\.test)/${1:/camelcase}/}();",
+			"});"
+		]
+	},
+	"Vitest - test (helper)": {
+		"prefix": [
+			"testf",
+			"testh"
+		],
+		"body": [
+			"test(\"${label}\", () => {",
+			"\texpect(${TM_FILENAME_BASE/(.*)(\\.test)/${1:/camelcase}/}()).toBe();",
+			"});"
+		]
+	},
+	"Vitest expect to throw": {
+		"prefix": "expectt",
+		"body": [
+			"expect(() => ${function}()).toThrow();"
+		]
+	},
+	"Vitest expect to throw (async)": {
+		"prefix": "expectta",
+		"body": [
+			"await expect(${function}()).rejects.toThrow();"
+		]
+	},
 	"Vitest for": {
 		"prefix": "teste",
 		"body": [
@@ -827,7 +681,25 @@
 			"});"
 		]
 	},
-
+	"Vitest for - no boolean": {
+		"prefix": "testeb",
+		"body": [
+			"test.for([",
+			"\t[\"number (positive)\", 1],",
+			"\t[\"number (negative)\", -1],",
+			"\t[\"string (non-empty)\", \"string\"],",
+			"\t[\"string (empty)\", \"\"],",
+			"\t[\"object (non-empty)\", { property: \"value\" }],",
+			"\t[\"object (empty)\", {}],",
+			"\t[\"array (non-empty)\", [1, 2, 3]],",
+			"\t[\"array (empty)\", []],",
+			"\t[\"null\", null],",
+			"\t[\"undefined\", undefined],",
+			"])(\"${label}%s\", ([, input]) => {",
+			"\texpect(${TM_FILENAME_BASE/(.*)(\\.test)/${1:/camelcase}/}(input)).toBe();",
+			"});"
+		]
+	},
 	"Vitest for - no number": {
 		"prefix": "testen",
 		"body": [
@@ -847,51 +719,6 @@
 			"});"
 		]
 	},
-
-	"Vitest for - non-empty string": {
-		"prefix": "testes",
-		"body": [
-			"test.for([",
-			"\t[\"boolean (true)\", true],",
-			"\t[\"boolean (false)\", false],",
-			"\t[\"number (positive)\", 1],",
-			"\t[\"number (negative)\", -1],",
-			"\t[\"number (NaN)\", NaN],",
-			"\t[\"string (empty)\", \"\"],",
-			"\t[\"object (non-empty)\", { property: \"value\" }],",
-			"\t[\"object (empty)\", {}],",
-			"\t[\"array (non-empty)\", [1, 2, 3]],",
-			"\t[\"array (empty)\", []],",
-			"\t[\"null\", null],",
-			"\t[\"undefined\", undefined],",
-			"])(\"${label}%s\", ([, input]) => {",
-			"\texpect(${TM_FILENAME_BASE/(.*)(\\.test)/${1:/camelcase}/}(input)).toBe();",
-			"});"
-		]
-	},
-
-	"Vitest for - non-empty object": {
-		"prefix": "testeo",
-		"body": [
-			"test.for([",
-			"\t[\"boolean (true)\", true],",
-			"\t[\"boolean (false)\", false],",
-			"\t[\"number (positive)\", 1],",
-			"\t[\"number (negative)\", -1],",
-			"\t[\"number (NaN)\", NaN],",
-			"\t[\"string (non-empty)\", \"string\"],",
-			"\t[\"string (empty)\", \"\"],",
-			"\t[\"array (non-empty)\", [1, 2, 3]],",
-			"\t[\"array (empty)\", []],",
-			"\t[\"object (empty)\", {}],",
-			"\t[\"null\", null],",
-			"\t[\"undefined\", undefined],",
-			"])(\"${label}%s\", ([, input]) => {",
-			"\texpect(${TM_FILENAME_BASE/(.*)(\\.test)/${1:/camelcase}/}(input)).toBe();",
-			"});"
-		]
-	},
-
 	"Vitest for - non-empty array": {
 		"prefix": "testea",
 		"body": [
@@ -913,14 +740,36 @@
 			"});"
 		]
 	},
-
-	"Vitest for - no boolean": {
-		"prefix": "testeb",
+	"Vitest for - non-empty object": {
+		"prefix": "testeo",
 		"body": [
 			"test.for([",
+			"\t[\"boolean (true)\", true],",
+			"\t[\"boolean (false)\", false],",
 			"\t[\"number (positive)\", 1],",
 			"\t[\"number (negative)\", -1],",
+			"\t[\"number (NaN)\", NaN],",
 			"\t[\"string (non-empty)\", \"string\"],",
+			"\t[\"string (empty)\", \"\"],",
+			"\t[\"array (non-empty)\", [1, 2, 3]],",
+			"\t[\"array (empty)\", []],",
+			"\t[\"object (empty)\", {}],",
+			"\t[\"null\", null],",
+			"\t[\"undefined\", undefined],",
+			"])(\"${label}%s\", ([, input]) => {",
+			"\texpect(${TM_FILENAME_BASE/(.*)(\\.test)/${1:/camelcase}/}(input)).toBe();",
+			"});"
+		]
+	},
+	"Vitest for - non-empty string": {
+		"prefix": "testes",
+		"body": [
+			"test.for([",
+			"\t[\"boolean (true)\", true],",
+			"\t[\"boolean (false)\", false],",
+			"\t[\"number (positive)\", 1],",
+			"\t[\"number (negative)\", -1],",
+			"\t[\"number (NaN)\", NaN],",
 			"\t[\"string (empty)\", \"\"],",
 			"\t[\"object (non-empty)\", { property: \"value\" }],",
 			"\t[\"object (empty)\", {}],",
@@ -933,32 +782,94 @@
 			"});"
 		]
 	},
-
-	"Vitest expect to throw": {
-		"prefix": "expectt",
+	"Vitest spec - component": {
+		"prefix": "specc",
 		"body": [
-			"expect(() => ${function}()).toThrow();"
-		],
+			"import { createMount } from \"@unit/support/mount\";",
+			"import { describe, expect, test } from \"vite-plus/test\";",
+			"import ${TM_FILENAME_BASE/(.*)(\\.test)/${1:/pascalcase}/} from \"./${TM_FILENAME_BASE/(.*)(\\.test)/${1:/kebabcase}/}.vue\";",
+			"",
+			"const mount = createMount(${TM_FILENAME_BASE/(.*)(\\.test)/${1:/pascalcase}/});",
+			"",
+			"describe(\"${TM_FILENAME_BASE/(.*)(\\.test)/${1:/kebabcase}/}\", () => {",
+			"\tdescribe(\"Initialisation\", () => {",
+			"\t\ttest(\"A Vue component should exist\", () => {",
+			"\t\t\tconst wrapper = mount();",
+			"",
+			"\t\t\texpect(wrapper.vm).toBeTypeOf(\"object\");",
+			"\t\t});",
+			"\t});",
+			"});"
+		]
 	},
-
-	"Vitest expect to throw (async)": {
-		"prefix": "expectta",
+	"Vitest spec - composable": {
+		"prefix": "speccl",
 		"body": [
-			"await expect(${function}()).rejects.toThrow();"
-		],
+			"import { describe, expect, test } from \"vite-plus/test\";",
+			"import ${TM_FILENAME_BASE/(.*)(\\.test)/${1:/camelcase}/} from \".\";",
+			"",
+			"describe(\"${TM_FILENAME_BASE/(.*)(\\.test)/${1:/camelcase}/}\", () => {",
+			"\ttest(\"Initialises\", () => {",
+			"\t\tconst response = ${TM_FILENAME_BASE/(.*)(\\.test)/${1:/camelcase}/}();",
+			"\t\t",
+			"\t\texpect(response).toBeTypeOf(\"object\");",
+			"\t});",
+			"",
+			"\ttest(\"\", () => {",
+			"\t\tconst { returned } = ${TM_FILENAME_BASE/(.*)(\\.test)/${1:/camelcase}/}();",
+			"\t});",
+			"});"
+		]
 	},
-
+	"Vitest spec - helper": {
+		"prefix": "spech",
+		"body": [
+			"import { describe, expect, test } from \"vite-plus/test\";",
+			"import { ${TM_FILENAME_BASE/(.*)(\\.test)/${1:/camelcase}/} } from \"./${TM_FILENAME_BASE/(.*)(\\.test)/${1:/kebabcase}/}\";",
+			"",
+			"describe(\"${TM_FILENAME_BASE/(.*)(\\.test)/${1:/kebabcase}/}\", () => {",
+			"\ttest(\"\", () => {",
+			"\t\t//",
+			"\t});",
+			"});"
+		]
+	},
+	"Vitest spec - store": {
+		"prefix": "specs",
+		"body": [
+			"import { beforeEach, describe, expect, test } from \"vite-plus/test\";",
+			"import { setActivePinia, createPinia } from \"pinia\";",
+			"import { use${TM_FILENAME_BASE/(.*)(\\.test)/${1:/pascalcase}/}Store } from \"./${TM_FILENAME_BASE/(.*)(\\.test)/${1:/kebabcase}/}\";",
+			"",
+			"describe(\"use${TM_FILENAME_BASE/(.*)(\\.test)/${1:/pascalcase}/}Store\", () => {",
+			"\tbeforeEach(() => {",
+			"\t\tsetActivePinia(createPinia());",
+			"\t});",
+			"",
+			"\ttest(\"label\", () => {",
+			"\t\tconst store = use${TM_FILENAME_BASE/(.*)(\\.test)/${1:/pascalcase}/}Store();",
+			"\t});",
+			"});"
+		]
+	},
 	"vue-test-utils expect emitted": {
 		"prefix": "emitted",
 		"body": [
 			"expect(wrapper.emitted(\"${event}\")).toEqual(${value});"
-		],
+		]
 	},
-
 	"vue-test-utils Flush Promises": {
 		"prefix": "flush",
 		"body": [
 			"import { flushPromises } from \"@vue/test-utils\""
-		],
+		]
 	},
+	"Watch": {
+		"prefix": "watch",
+		"body": [
+			"watch(${ref}, () => {",
+			"\t",
+			"});"
+		]
+	}
 }
