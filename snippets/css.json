@@ -1,9 +1,66 @@
 {
+	"Appearance none": {
+		"prefix": "an",
+		"body": "appearance: none;"
+	},
 	"Dark mode": {
 		"prefix": "dark",
 		"body": [
-			"&:where(.dark, .dark *) ",
+			"&:where(.dark, .dark *) "
+		]
+	},
+	"Display block": {
+		"prefix": "db",
+		"body": "display: block;"
+	},
+	"Display flex": {
+		"prefix": "df",
+		"body": "display: flex;"
+	},
+	"Linear gradient": {
+		"prefix": [
+			"grad",
+			"gradient"
 		],
+		"body": [
+			"background-image: linear-gradient(to bottom, ${1:start}, ${2:end});"
+		]
+	},
+	"Margin Block End 1": {
+		"prefix": "mb1",
+		"body": [
+			"margin-block-end: calc(var(--spacing) * 1);"
+		]
+	},
+	"Margin Block End 2": {
+		"prefix": "mb2",
+		"body": [
+			"margin-block-end: calc(var(--spacing) * 2);"
+		]
+	},
+	"Margin Block End 3": {
+		"prefix": "mb3",
+		"body": [
+			"margin-block-end: calc(var(--spacing) * 3);"
+		]
+	},
+	"Margin Block End 4": {
+		"prefix": "mb4",
+		"body": [
+			"margin-block-end: calc(var(--spacing) * 4);"
+		]
+	},
+	"Margin Block End 5": {
+		"prefix": "mb5",
+		"body": [
+			"margin-block-end: calc(var(--spacing) * 5);"
+		]
+	},
+	"Margin Block End 6": {
+		"prefix": "mb6",
+		"body": [
+			"margin-block-end: calc(var(--spacing) * 6);"
+		]
 	},
 	"Margin Block Start 1": {
 		"prefix": "mt1",
@@ -95,42 +152,6 @@
 			"margin-inline-end: calc(var(--spacing) * 6);"
 		]
 	},
-	"Margin Block End 1": {
-		"prefix": "mb1",
-		"body": [
-			"margin-block-end: calc(var(--spacing) * 1);"
-		]
-	},
-	"Margin Block End 2": {
-		"prefix": "mb2",
-		"body": [
-			"margin-block-end: calc(var(--spacing) * 2);"
-		]
-	},
-	"Margin Block End 3": {
-		"prefix": "mb3",
-		"body": [
-			"margin-block-end: calc(var(--spacing) * 3);"
-		]
-	},
-	"Margin Block End 4": {
-		"prefix": "mb4",
-		"body": [
-			"margin-block-end: calc(var(--spacing) * 4);"
-		]
-	},
-	"Margin Block End 5": {
-		"prefix": "mb5",
-		"body": [
-			"margin-block-end: calc(var(--spacing) * 5);"
-		]
-	},
-	"Margin Block End 6": {
-		"prefix": "mb6",
-		"body": [
-			"margin-block-end: calc(var(--spacing) * 6);"
-		]
-	},
 	"Margin Inline Start 1": {
 		"prefix": [
 			"ms1",
@@ -183,6 +204,88 @@
 		],
 		"body": [
 			"margin-inline-start: calc(var(--spacing) * 6);"
+		]
+	},
+	"Media query - 2xl": {
+		"prefix": "mq2xl",
+		"body": [
+			"@media (min-width: var(--breakpoint-2xl)) {",
+			"\t${1}",
+			"}"
+		]
+	},
+	"Media query - lg": {
+		"prefix": "mql",
+		"body": [
+			"@media (min-width: var(--breakpoint-lg)) {",
+			"\t${1}",
+			"}"
+		]
+	},
+	"Media query - md": {
+		"prefix": "mqm",
+		"body": [
+			"@media (min-width: var(--breakpoint-md)) {",
+			"\t${1}",
+			"}"
+		]
+	},
+	"Media query - sm": {
+		"prefix": "mqs",
+		"body": [
+			"@media (min-width: var(--breakpoint-sm) {",
+			"\t${1}",
+			"}"
+		]
+	},
+	"Media query - xl": {
+		"prefix": "mqxl",
+		"body": [
+			"@media (min-width: var(--breakpoint-xl)) {",
+			"\t${1}",
+			"}"
+		]
+	},
+	"Motion safe": {
+		"prefix": "ms",
+		"body": [
+			"@media (prefers-reduced-motion: no-preference) {"
+		]
+	},
+	"Padding Block End 1": {
+		"prefix": "pb1",
+		"body": [
+			"padding-block-end: calc(var(--spacing) * 1);"
+		]
+	},
+	"Padding Block End 2": {
+		"prefix": "pb2",
+		"body": [
+			"padding-block-end: calc(var(--spacing) * 2);"
+		]
+	},
+	"Padding Block End 3": {
+		"prefix": "pb3",
+		"body": [
+			"padding-block-end: calc(var(--spacing) * 3);"
+		]
+	},
+	"Padding Block End 4": {
+		"prefix": "pb4",
+		"body": [
+			"padding-block-end: calc(var(--spacing) * 4);"
+		]
+	},
+	"Padding Block End 5": {
+		"prefix": "pb5",
+		"body": [
+			"padding-block-end: calc(var(--spacing) * 5);"
+		]
+	},
+	"Padding Block End 6": {
+		"prefix": "pb6",
+		"body": [
+			"padding-block-end: calc(var(--spacing) * 6);"
 		]
 	},
 	"Padding Block Start 1": {
@@ -275,42 +378,6 @@
 			"padding-inline-end: calc(var(--spacing) * 6);"
 		]
 	},
-	"Padding Block End 1": {
-		"prefix": "pb1",
-		"body": [
-			"padding-block-end: calc(var(--spacing) * 1);"
-		]
-	},
-	"Padding Block End 2": {
-		"prefix": "pb2",
-		"body": [
-			"padding-block-end: calc(var(--spacing) * 2);"
-		]
-	},
-	"Padding Block End 3": {
-		"prefix": "pb3",
-		"body": [
-			"padding-block-end: calc(var(--spacing) * 3);"
-		]
-	},
-	"Padding Block End 4": {
-		"prefix": "pb4",
-		"body": [
-			"padding-block-end: calc(var(--spacing) * 4);"
-		]
-	},
-	"Padding Block End 5": {
-		"prefix": "pb5",
-		"body": [
-			"padding-block-end: calc(var(--spacing) * 5);"
-		]
-	},
-	"Padding Block End 6": {
-		"prefix": "pb6",
-		"body": [
-			"padding-block-end: calc(var(--spacing) * 6);"
-		]
-	},
 	"Padding Inline Start 1": {
 		"prefix": [
 			"ps1",
@@ -365,117 +432,6 @@
 			"padding-inline-start: calc(var(--spacing) * 6);"
 		]
 	},
-	"Width full": {
-		"prefix": "wf",
-		"body": [
-			"width: 100%;",
-		],
-	},
-	"Text color": {
-		"prefix": ["color", "text"],
-		"body": [
-			"color: var(--colour-${color}-${shade});",
-		],
-	},
-	"Shadow 2xs": {
-		"prefix": [
-			"shadow-2xs",
-			"shadow2xs"
-		],
-		"body": "box-shadow: 0 1px rgb(0 0 0 / 0.05);",
-	},
-	"Shadow xs": {
-		"prefix": [
-			"shadow-xs",
-			"shadowxs"
-		],
-		"body": "box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);",
-	},
-	"Shadow sm": {
-		"prefix": [
-			"shadow-sm",
-			"shadowsm"
-		],
-		"body": "box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);",
-	},
-	"Shadow md": {
-		"prefix": [
-			"shadow-md",
-			"shadowmd"
-		],
-		"body": "box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);",
-	},
-	"Shadow lg": {
-		"prefix": [
-			"shadow-lg",
-			"shadowlg"
-		],
-		"body": "box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);",
-	},
-	"Shadow xl": {
-		"prefix": [
-			"shadow-xl",
-			"shadowxl"
-		],
-		"body": "box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);",
-	},
-	"Shadow 2xl": {
-		"prefix": [
-			"shadow-2xl",
-			"shadow2xl"
-		],
-		"body": "box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);",
-	},
-	"Radius xs": {
-		"prefix": [
-			"rounded-xs",
-			"roundedxs",
-			"radius-xs",
-			"radiusxs",
-			"radxs"
-		],
-		"body": "border-radius: var(--radius-xs);",
-	},
-	"Radius sm": {
-		"prefix": [
-			"rounded-sm",
-			"roundedsm",
-			"radius-sm",
-			"radiussm",
-			"radsm"
-		],
-		"body": "border-radius: var(--radius-sm);",
-	},
-	"Radius md": {
-		"prefix": [
-			"rounded-md",
-			"roundedmd",
-			"radius-md",
-			"radiusmd",
-			"radmd"
-		],
-		"body": "border-radius: var(--radius-md);",
-	},
-	"Radius lg": {
-		"prefix": [
-			"rounded-lg",
-			"roundedlg",
-			"radius-lg",
-			"radiuslg",
-			"radlg"
-		],
-		"body": "border-radius: var(--radius-lg);",
-	},
-	"Radius xl": {
-		"prefix": [
-			"rounded-xl",
-			"roundedxl",
-			"radius-xl",
-			"radiusxl",
-			"radxl"
-		],
-		"body": "border-radius: var(--radius-xl);",
-	},
 	"Radius 2xl": {
 		"prefix": [
 			"rounded-2xl",
@@ -484,7 +440,7 @@
 			"radius2xl",
 			"rad2xl"
 		],
-		"body": "border-radius: var(--radius-2xl);",
+		"body": "border-radius: var(--radius-2xl);"
 	},
 	"Radius 3xl": {
 		"prefix": [
@@ -494,7 +450,7 @@
 			"radius3xl",
 			"rad3xl"
 		],
-		"body": "border-radius: var(--radius-3xl);",
+		"body": "border-radius: var(--radius-3xl);"
 	},
 	"Radius 4xl": {
 		"prefix": [
@@ -504,73 +460,120 @@
 			"radius4xl",
 			"rad4xl"
 		],
-		"body": "border-radius: var(--radius-4xl);",
+		"body": "border-radius: var(--radius-4xl);"
 	},
-	"Display block": {
-		"prefix": "db",
-		"body": "display: block;",
-	},
-	"Display flex": {
-		"prefix": "df",
-		"body": "display: flex;",
-	},
-	"Appearance none": {
-		"prefix": "an",
-		"body": "appearance: none;",
-	},
-	"Motion safe": {
-		"prefix": "ms",
-		"body": [
-			"@media (prefers-reduced-motion: no-preference) {",
-		],
-	},
-	"Media query - sm": {
-		"prefix": "mqs",
-		"body": [
-			"@media (min-width: var(--breakpoint-sm) {",
-			"\t${1}",
-			"}",
-		],
-	},
-	"Media query - md": {
-		"prefix": "mqm",
-		"body": [
-			"@media (min-width: var(--breakpoint-md)) {",
-			"\t${1}",
-			"}",
-		],
-	},
-	"Media query - lg": {
-		"prefix": "mql",
-		"body": [
-			"@media (min-width: var(--breakpoint-lg)) {",
-			"\t${1}",
-			"}",
-		],
-	},
-	"Media query - xl": {
-		"prefix": "mqxl",
-		"body": [
-			"@media (min-width: var(--breakpoint-xl)) {",
-			"\t${1}",
-			"}",
-		],
-	},
-	"Media query - 2xl": {
-		"prefix": "mq2xl",
-		"body": [
-			"@media (min-width: var(--breakpoint-2xl)) {",
-			"\t${1}",
-			"}",
-		],
-	},
-	"Linear gradient": {
+	"Radius lg": {
 		"prefix": [
-			"grad",
-			"gradient"
+			"rounded-lg",
+			"roundedlg",
+			"radius-lg",
+			"radiuslg",
+			"radlg"
+		],
+		"body": "border-radius: var(--radius-lg);"
+	},
+	"Radius md": {
+		"prefix": [
+			"rounded-md",
+			"roundedmd",
+			"radius-md",
+			"radiusmd",
+			"radmd"
+		],
+		"body": "border-radius: var(--radius-md);"
+	},
+	"Radius sm": {
+		"prefix": [
+			"rounded-sm",
+			"roundedsm",
+			"radius-sm",
+			"radiussm",
+			"radsm"
+		],
+		"body": "border-radius: var(--radius-sm);"
+	},
+	"Radius xl": {
+		"prefix": [
+			"rounded-xl",
+			"roundedxl",
+			"radius-xl",
+			"radiusxl",
+			"radxl"
+		],
+		"body": "border-radius: var(--radius-xl);"
+	},
+	"Radius xs": {
+		"prefix": [
+			"rounded-xs",
+			"roundedxs",
+			"radius-xs",
+			"radiusxs",
+			"radxs"
+		],
+		"body": "border-radius: var(--radius-xs);"
+	},
+	"Shadow 2xl": {
+		"prefix": [
+			"shadow-2xl",
+			"shadow2xl"
+		],
+		"body": "box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);"
+	},
+	"Shadow 2xs": {
+		"prefix": [
+			"shadow-2xs",
+			"shadow2xs"
+		],
+		"body": "box-shadow: 0 1px rgb(0 0 0 / 0.05);"
+	},
+	"Shadow lg": {
+		"prefix": [
+			"shadow-lg",
+			"shadowlg"
+		],
+		"body": "box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);"
+	},
+	"Shadow md": {
+		"prefix": [
+			"shadow-md",
+			"shadowmd"
+		],
+		"body": "box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);"
+	},
+	"Shadow sm": {
+		"prefix": [
+			"shadow-sm",
+			"shadowsm"
+		],
+		"body": "box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);"
+	},
+	"Shadow xl": {
+		"prefix": [
+			"shadow-xl",
+			"shadowxl"
+		],
+		"body": "box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);"
+	},
+	"Shadow xs": {
+		"prefix": [
+			"shadow-xs",
+			"shadowxs"
+		],
+		"body": "box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);"
+	},
+	"Text color": {
+		"prefix": [
+			"color",
+			"text"
 		],
 		"body": [
-			"background-image: linear-gradient(to bottom, ${1:start}, ${2:end});",
-		],
+			"color: var(--colour-${color}-${shade});"
+		]
 	},
+	"Width full": {
+		"prefix": "wf",
+		"body": [
+			"width: 100%;"
+		]
+	}
 }
