@@ -23,7 +23,7 @@
 			"/**",
 			" * ",
 			" */",
-			"export default function ${TM_FILENAME_BASE/(.*)/${1:/camelcase}/}() {",
+			"export function ${TM_FILENAME_BASE/(.*)/${1:/camelcase}/}() {",
 			"\treturn {",
 			"\t\t",
 			"\t}",
@@ -40,7 +40,7 @@
 	"Define Emits": {
 		"prefix": "emits",
 		"body": [
-			"const emit = defineEmits([\"\"]);"
+			"const emit = defineEmits([\"${1:event}\"]);"
 		]
 	},
 	"Describe": {
@@ -128,8 +128,8 @@
 	"Function parameter (array)": {
 		"prefix": "parama",
 		"body": [
-			"@param  {array}  ${1:name}",
-			"*     ${2:description}"
+			"@param  {${1:object}[]}  ${2:name}",
+			"*     ${3:description}"
 		]
 	},
 	"Function parameter (boolean)": {
@@ -190,10 +190,10 @@
 			"*     ${2:description}"
 		]
 	},
-	"Get property value by path": {
+	"Get path value": {
 		"prefix": "gpv",
 		"body": [
-			"get(${object}, \"${path}\")"
+			"getPathValue(${object}, \"${path}\")"
 		]
 	},
 	"Has own property": {
@@ -230,7 +230,7 @@
 	"Import composable": {
 		"prefix": "importc",
 		"body": [
-			"import use${Composable} from \"@/composables/${folder}/use-${file}\";",
+			"import { use${Composable} } from \"@/composables/${folder}/use-${file}\";",
 			"",
 			"const { variable } = use${Composable}();"
 		]
@@ -517,7 +517,7 @@
 	"Use API": {
 		"prefix": "useapi",
 		"body": [
-			"import useApi from \"@/composables/use-api\";",
+			"import useApi from \"@/composables/api/use-api\";",
 			"",
 			"const { get, isLoading, isReady } = useApi();"
 		]
@@ -583,7 +583,7 @@
 	"Vitest - Mock": {
 		"prefix": "mock",
 		"body": [
-			"const mock${methodName} = vi.fn();",
+			"const mock${methodName} = vi.hoisted(() => vi.fn());",
 			"",
 			"vi.mock(\"@/composables/${composable}/${composable}\", () => ({",
 			"\tdefault: () => ({",
@@ -606,6 +606,7 @@
 		"prefix": "wrapperv",
 		"body": [
 			"const wrapper = mount();",
+			"// Use vm only for exposed component instance APIs.",
 			"const vm = wrapper.vm;"
 		]
 	},
@@ -614,14 +615,15 @@
 		"body": [
 			"test(\"${label}\", () => {",
 			"\tconst wrapper = mount();",
-			"\tconst vm = wrapper.vm;",
+			"",
+			"\texpect(wrapper.exists()).toBe(true);",
 			"});"
 		]
 	},
 	"Vitest - test (async)": {
 		"prefix": "testa",
 		"body": [
-			"test(\"${label}\", async() => {",
+			"test(\"${label}\", async () => {",
 			"\texpect(${TM_FILENAME_BASE/(.*)(\\.test)/${1:/camelcase}/}()).toBe();",
 			"});"
 		]
@@ -785,18 +787,18 @@
 	"Vitest spec - component": {
 		"prefix": "specc",
 		"body": [
-			"import { createMount } from \"@unit/support/mount\";",
+			"import { createMount } from \"@lewishowles/testing/vue\";",
 			"import { describe, expect, test } from \"vite-plus/test\";",
 			"import ${TM_FILENAME_BASE/(.*)(\\.test)/${1:/pascalcase}/} from \"./${TM_FILENAME_BASE/(.*)(\\.test)/${1:/kebabcase}/}.vue\";",
 			"",
 			"const mount = createMount(${TM_FILENAME_BASE/(.*)(\\.test)/${1:/pascalcase}/});",
 			"",
 			"describe(\"${TM_FILENAME_BASE/(.*)(\\.test)/${1:/kebabcase}/}\", () => {",
-			"\tdescribe(\"Initialisation\", () => {",
-			"\t\ttest(\"A Vue component should exist\", () => {",
+			"\tdescribe(\"Render contracts\", () => {",
+			"\t\ttest(\"Mounts the component\", () => {",
 			"\t\t\tconst wrapper = mount();",
 			"",
-			"\t\t\texpect(wrapper.vm).toBeTypeOf(\"object\");",
+			"\t\t\texpect(wrapper.exists()).toBe(true);",
 			"\t\t});",
 			"\t});",
 			"});"
@@ -806,7 +808,7 @@
 		"prefix": "speccl",
 		"body": [
 			"import { describe, expect, test } from \"vite-plus/test\";",
-			"import ${TM_FILENAME_BASE/(.*)(\\.test)/${1:/camelcase}/} from \".\";",
+			"import { ${TM_FILENAME_BASE/(.*)(\\.test)/${1:/camelcase}/} } from \".\";",
 			"",
 			"describe(\"${TM_FILENAME_BASE/(.*)(\\.test)/${1:/camelcase}/}\", () => {",
 			"\ttest(\"Initialises\", () => {",
@@ -837,14 +839,12 @@
 	"Vitest spec - store": {
 		"prefix": "specs",
 		"body": [
-			"import { beforeEach, describe, expect, test } from \"vite-plus/test\";",
-			"import { setActivePinia, createPinia } from \"pinia\";",
+			"import { describe, expect, test } from \"vite-plus/test\";",
+			"import { setupPinia } from \"@lewishowles/testing/vitest\";",
 			"import { use${TM_FILENAME_BASE/(.*)(\\.test)/${1:/pascalcase}/}Store } from \"./${TM_FILENAME_BASE/(.*)(\\.test)/${1:/kebabcase}/}\";",
 			"",
 			"describe(\"use${TM_FILENAME_BASE/(.*)(\\.test)/${1:/pascalcase}/}Store\", () => {",
-			"\tbeforeEach(() => {",
-			"\t\tsetActivePinia(createPinia());",
-			"\t});",
+			"\tsetupPinia();",
 			"",
 			"\ttest(\"label\", () => {",
 			"\t\tconst store = use${TM_FILENAME_BASE/(.*)(\\.test)/${1:/pascalcase}/}Store();",
